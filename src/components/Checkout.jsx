@@ -65,12 +65,11 @@ class Checkout extends React.Component {
           <div>
             <div>
               {nameArray
-                .map(({ name, count }) => (
+                .map(({ name, count, price }) => (
                   <div key={ name }>
                     <h4>{ name }</h4>
-                    <p>
-                      { count }
-                    </p>
+                    <p>Quantidade: { count }x</p>
+                    <p>R${(Number(price) * count).toFixed(2).replace('.', ',')}</p>
                   </div>
                 ))}
             </div>
@@ -224,6 +223,7 @@ class Checkout extends React.Component {
           </div>
         </fieldset>
         <div className="btn-container">
+        <p className="total">Total: R${(nameArray.reduce((acc, { price, count }) => (acc + (Number(price) * count)), 0).toFixed(2).replace('.', ','))}</p>
           <Link to="/">
             <button
               type="button"

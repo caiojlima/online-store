@@ -5,7 +5,7 @@
   font-size: 30px;
   justify-content: space-around;
   margin-top: 20px;
-  width: 10%;
+  width: 10%; 
 }
 
 .empty-container {
@@ -68,6 +68,7 @@
   border-radius: 20px;
   margin: 30px;
   width: 400px;
+  background-color: white;
 }
 
 .cart-img {
@@ -107,7 +108,7 @@
   margin: 1px;
   border: 1px solid rgb(194, 192, 192);
   padding: 10px;
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Press Start 2P', cursive;
   color: rgb(68, 68, 68);
 }

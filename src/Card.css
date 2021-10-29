@@ -3,13 +3,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  
 }
 
 .card-content {
   align-items: center;
   border: rgb(175, 174, 174) solid 1px;
   border-radius: 7px;
-  box-shadow: -2px 5px 5px rgb(104, 103, 103);
+  box-shadow: -2px 5px 5px rgb(136, 136, 136);
   display: flex;
   flex-direction: column;
   height: 550px;
@@ -18,6 +19,7 @@
   width: 23%;
   padding-top: 15px;
   position: relative;
+  background-color: white;
 }
 
 .title-container {

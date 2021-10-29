@@ -1,18 +1,21 @@
 .links {
   display: flex;
   font-size: 25px;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
-  width: 10%;
+  margin-left: 10px;
+  width: 14%;
+  height: 50px;
 }
 
 .main-container {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 250px;
   justify-content: space-evenly;
   margin-bottom: 30px;
+  color: white;
 }
 
 .main-container h2 {
@@ -37,6 +40,7 @@ form {
   align-items: center;
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .form-container {
@@ -76,6 +80,7 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  color: white;
 }
 
 .comments h2 {
@@ -84,8 +89,9 @@ textarea {
 }
 
 .comment-container {
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   margin: 10px;
   padding: 20px;
   width: 80%;
+  
 }

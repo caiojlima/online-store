@@ -11,7 +11,7 @@
 }
 
 .title {
-  color: rgb(75, 75, 75);
+  color: rgb(41, 41, 41);
   font-family: 'Rajdhani', sans-serif;
   font-size: 50px;
   text-shadow: 5px 5px 5px rgb(71, 71, 71);
@@ -22,7 +22,6 @@
   display: flex;
   justify-content: space-around;
   height: 100px;
-  background-color: rgb(156, 156, 156);
   padding: 10px;
 }
 
@@ -48,6 +47,7 @@ a {
 .cart-link {
   font-size: 30px;
   transition: ease 0.2s;
+  color: white;
 }
 
 .cart-link:hover {
@@ -97,21 +97,24 @@ a {
 .subtitle {
   font-size: 20px;
   font-weight: 900;
+  color: white;
 }
 
 .main {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .categories-container {
   border: 2px solid black;
-  border-radius: 5px;
-  box-shadow: -7px -7px 5px rgb(104, 103, 103);
+  border-radius: 10px;
+  box-shadow: -7px -7px 5px rgb(61, 61, 61);
   display: inline-block;
-  height: 920px;
   padding: 10px;
   width: 15%;
+  background-color: rgb(175, 175, 175);
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .categories-title {

@@ -49,7 +49,7 @@ class Card extends React.Component {
                 type="button"
                 onClick={ () => addItemCart(title, availability, thumbnail, price) }
               >
-                Comprar
+                Adicionar ao carrinho
               </button>
             </div>
             <Link

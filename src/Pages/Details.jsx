@@ -74,6 +74,7 @@ class Details extends Component {
         <div className="links">
           <Link to="/"><BsFillArrowLeftCircleFill /></Link>
           <Link
+            className="cart-link" 
             to={ { pathname: '/cart' } }
             data-testid="shopping-cart-button"
           >
@@ -90,7 +91,7 @@ class Details extends Component {
             {`${title}`}
             {' '}
             R$
-            <span>{price}</span>
+            <span>{price.toFixed(2).replace('.', ',')}</span>
           </h2>
           <div className="main-info">
             <img src={ thumbnail } alt={ title } />
@@ -101,12 +102,12 @@ class Details extends Component {
             </ul>
           </div>
           <button
-            className="buy-button"
+            className="card-button"
             data-testid="product-detail-add-to-cart"
             type="button"
             onClick={ () => this.addItemCart(title) }
           >
-            Comprar
+            Adicionar ao carrinho
           </button>
         </div>
         <form>

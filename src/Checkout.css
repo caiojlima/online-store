@@ -2,9 +2,9 @@
   border: none;
   display: flex;
   flex-direction: column;
-  height: 650px;
   justify-content: space-around;
   padding: 40px 50px;
+  color: white;
 }
 
 .payment-method {
@@ -37,7 +37,8 @@
 }
 
 .btn-container {
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
   display: flex;
   height: 100px;
   justify-content: center;
