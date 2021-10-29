@@ -72,7 +72,7 @@ class Cart extends React.Component {
                   <MdOutlineRemoveShoppingCart className="cart-icon" />
               </div>)
               : (
-                <div>
+                <div className="cards-container">
                   {nameArray
                     .map(({ name, count, thumbnail, price }, index) => (
                       <div className="cart-card-container" key={ index }>
