@@ -7,14 +7,16 @@
 
 .card-content {
   align-items: center;
-  border: black solid 1px;
+  border: rgb(175, 174, 174) solid 1px;
   border-radius: 7px;
-  box-shadow: 5px 5px 5px rgb(104, 103, 103);
+  box-shadow: -2px 5px 5px rgb(104, 103, 103);
   display: flex;
   flex-direction: column;
   height: 550px;
+  justify-content: space-around;
   margin: 7px;
   width: 23%;
+  position: relative;
 }
 
 .card-title {
@@ -22,17 +24,64 @@
   text-align: center;
 }
 
+.card-pay-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .card-price {
-  align-self: flex-start;
+  color: rgb(2, 194, 2);
+  font-size: 20px;
+  font-weight: 900;
+  align-self: center;
   margin-left: 10px;
 }
 
+.card-img-container {
+  width: 80%;
+  height: 130px;
+  border: 2px solid rgb(194, 192, 192);
+  border-radius: 5px;
+  box-shadow: -5px 5px 5px gray;
+}
+
 .card-img {
-  height: 240px;
-  width: 240px;
+  width: 100%;
+  height: 100%;
+}
+
+.free-container {
+  height: 20px;
+}
+
+.free-shipping {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 900;
+  color: rgb(68, 94, 212);
+}
+
+.free-icon {
+  font-size: 25px;
+  margin-right: 12px;
 }
 
 .card-button {
+  background: rgb(2, 194, 2);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+  height: 40px;
   cursor: pointer;
-  margin: 20px;
+}
+
+.card-button:hover {
+  background: rgb(1, 155, 1);
+}
+
+.card-button:active {
+  background: rgb(129, 177, 52);
 }

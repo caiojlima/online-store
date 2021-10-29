@@ -21,21 +21,35 @@ class Card extends React.Component {
             <p className="card-title">
               { title }
             </p>
-            <p className="card-price">
-              R$
-              <span>
-                { JSON.stringify(price).replace('.', ',') }
-              </span>
-            </p>
-            <img src={ thumbnail } alt="imagem" className="card-img" />
-            <button
-              className="card-button"
-              data-testid="product-add-to-cart"
-              type="button"
-              onClick={ () => addItemCart(title, availability, thumbnail, price) }
-            >
-              Comprar
-            </button>
+            <div className="card-img-container">
+              <img src={ thumbnail } alt="imagem" className="card-img" />
+            </div>
+            <div className="free-container">
+              {(free
+                && (
+                  <p className="free-shipping" data-testid="free-shipping">
+                    <FaTruck className="free-icon" />
+                    {' '}
+                    Free
+                  </p>)
+                )}
+            </div>
+            <div className="card-pay-container">
+              <p className="card-price">
+                Valor: R$
+                <span>
+                  { price.toFixed(2).replace('.', ',') }
+                </span>
+              </p>
+              <button
+                className="card-button"
+                data-testid="product-add-to-cart"
+                type="button"
+                onClick={ () => addItemCart(title, availability, thumbnail, price) }
+              >
+                Comprar
+              </button>
+            </div>
             <Link
               data-testid="product-detail-link"
               to={ {
@@ -51,13 +65,6 @@ class Card extends React.Component {
             >
               Mais Detalhes
             </Link>
-            {(free
-            && (
-              <p data-testid="free-shipping">
-                <FaTruck />
-                Frete Grátis
-              </p>)
-            )}
           </div>
         ))}
       </div>
