@@ -46,15 +46,19 @@ a {
 .categories-container {
   border: 2px solid black;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px rgb(104, 103, 103);
+  box-shadow: -7px -7px 5px rgb(104, 103, 103);
   display: inline-block;
-  height: 800px;
-  padding: 15px;
+  height: 920px;
+  padding: 10px;
   width: 15%;
 }
 
 .categories-title {
   text-align: center;
+  color: rgb(78, 78, 78);
+  font-size: 20px;
+  font-weight: 900;
+  text-shadow: 5px 5px 5px gray;
 }
 
 .card-container {
