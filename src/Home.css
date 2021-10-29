@@ -47,6 +47,12 @@ a {
 
 .cart-link {
   font-size: 30px;
+  transition: ease 0.2s;
+}
+
+.cart-link:hover {
+  font-size: 32px;
+  margin-left: -5px;
 }
 
 .search-input {

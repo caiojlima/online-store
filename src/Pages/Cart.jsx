@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { BsFillArrowLeftCircleFill, BsPlusCircleFill } from 'react-icons/bs';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 import '../Cart.css';
 
@@ -54,7 +54,7 @@ class Cart extends React.Component {
             <Link to="/"><BsFillArrowLeftCircleFill /></Link>
           </div>
           <div className="main-cart-content">
-            {(stringArray && nameArray.length) && (
+            {(stringArray) && (
               <div className="clear-container">
               <button
                 type="button"
@@ -76,9 +76,9 @@ class Cart extends React.Component {
                   {nameArray
                     .map(({ name, count, thumbnail, price }, index) => (
                       <div className="cart-card-container" key={ index }>
-                        <h4 className="cart-title" data-testid="shopping-cart-product-name">{name}</h4>
-                        <h4 className="cart-price">R${ price.toFixed(2).replace('.', ',') }</h4>
                         <img className="cart-img" src={ thumbnail } alt={ name } />
+                        <h4 className="cart-title" data-testid="shopping-cart-product-name">{name}</h4>
+                        <h4 className="cart-price">R${ (Number(price) * count).toFixed(2).replace('.', ',') }</h4>
                         <div className="count-container">
                           <button
                             className="cart-increase"
@@ -109,7 +109,10 @@ class Cart extends React.Component {
                     ))}
                 </div>
               )}
-              {(stringArray && nameArray.length) && (
+              {(stringArray) && (
+                <p className="total">Total: R${(nameArray.reduce((acc, { price, count }) => (acc + (Number(price) * count)), 0).toFixed(2).replace('.', ','))}</p>
+              )}
+              {(stringArray) && (
                 <div className="buy-container">
                   <Link to="/checkout">
                     <button

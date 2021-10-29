@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .link {
   display: flex;
-  font-size: 25px;
+  font-size: 30px;
   justify-content: space-around;
   margin-top: 20px;
   width: 10%;
@@ -11,7 +13,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 350px;
+  height: 450px;
 }
 
 .empty {
@@ -41,7 +43,7 @@
 }
 
 .clear-container button {
-  width: 65%;
+  width: 53%;
   height: 50px;
   background-color: red;
   border: none;
@@ -49,6 +51,11 @@
   color: white;
   font-size: 20px;
   font-weight: 900;
+  cursor: pointer;
+}
+
+.clear-container button:hover {
+  background-color: brown;
 }
 
 .cart-card-container {
@@ -57,13 +64,35 @@
   justify-content: center;
   align-items: center;
   padding: 20px 20px;
-  border: 2px solid black;
+  border: rgb(175, 174, 174) solid 1px;
   border-radius: 20px;
   margin: 30px;
+  width: 400px;
 }
 
 .cart-img {
   width: 200px;
+  height: 200px;
+  border: 2px solid rgb(194, 192, 192);
+  border-radius: 5px;
+  box-shadow: -5px 5px 5px gray;
+}
+
+.cart-title {
+  margin-top: 30px;
+  text-align: justify;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.cart-price {
+  color: rgb(2, 194, 2);
+  font-size: 20px;
+  font-weight: 900;
+  align-self: center;
+  margin-left: 10px;
 }
 
 .count-container {
@@ -76,23 +105,47 @@
 
 .cart-quantity {
   margin: 1px;
-  border: 1px solid black;
+  border: 1px solid rgb(194, 192, 192);
   padding: 10px;
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  color: rgb(68, 68, 68);
+}
+
+.cart-increase {
+  color: green;
+  font-size: 25px;
+}
+
+.cart-decrease {
+  color: red;
+  font-size: 30px;
 }
 
 .cart-increase, .cart-decrease {
   border: none;
-  font-size: 25px;
   font-weight: 900;
   cursor: pointer;
 }
 
-.cart-increase:hover, .cart-decrease:hover {
-  color: blue;
+.cart-decrease:hover {
+  color: rgb(148, 0, 0);
+}
+
+.cart-increase:hover {
+  color: rgb(1, 85, 1);
 }
 
 .cart-increase:active, .cart-decrease:active {
-  color: lightcoral;
+  color: rgb(3, 3, 189);
+}
+
+.total {
+  color: rgb(2, 194, 2);
+  font-size: 20px;
+  font-weight: 900;
+  align-self: center;
+  margin-left: 10px;
 }
 
 .buy-container {
