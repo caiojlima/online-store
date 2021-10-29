@@ -1,0 +1,195 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { BsCart4, BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import StarRatings from 'react-star-ratings';
+import '../Details.css';
+
+class Details extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rating: 1,
+      emailInput: '',
+      commentInput: '',
+      isButtonDisabled: true,
+    };
+  }
+
+  changeRating = (newRating) => {
+    this.setState({
+      rating: newRating,
+    });
+  }
+
+  addItemCart = (name) => {
+    const { location: { state: { availability, thumbnail, price } } } = this.props;
+    const items = localStorage.getItem('items');
+    const parseItems = JSON.parse(items);
+    if (parseItems) {
+      if (!parseItems.some(({ name: name2 }) => name2 === name)) {
+        parseItems.push({ name, count: 1, availability, thumbnail, price });
+        const array = JSON.stringify(parseItems);
+        localStorage.setItem('items', array);
+      }
+    } else {
+      const array = JSON.stringify([{ name, count: 1, availability, thumbnail, price }]);
+      localStorage.setItem('items', array);
+    }
+    this.forceUpdate();
+  };
+
+  handleInput = ({ target: { name, value } }) => {
+    this.setState({ [name]: value }, () => {
+      const { emailInput } = this.state;
+      if (emailInput && emailInput.includes('@' && '.com')) {
+        this.setState({ isButtonDisabled: false });
+      } else {
+        this.setState({ isButtonDisabled: true });
+      }
+    });
+  }
+
+  submitComment = ({ target: { name } }) => {
+    const { rating, emailInput, commentInput } = this.state;
+    const comment = { name, rating, email: emailInput, comment: commentInput };
+    const comments = JSON.parse(localStorage.getItem('comments'));
+    if (comments) {
+      const array = [...comments, comment];
+      localStorage.setItem('comments', JSON.stringify(array));
+    } else {
+      const array = [comment];
+      localStorage.setItem('comments', JSON.stringify(array));
+    }
+    this.setState({ rating: 1, emailInput: '', commentInput: '' });
+  }
+
+  render() {
+    const { location: { state: { title, attributes, thumbnail, price } } } = this.props;
+    const { rating, emailInput, commentInput, isButtonDisabled } = this.state;
+    const cartCount = JSON.parse(localStorage.getItem('items'));
+    const comments = JSON.parse(localStorage.getItem('comments'));
+    return (
+      <div>
+        <div className="links">
+          <Link to="/"><BsFillArrowLeftCircleFill /></Link>
+          <Link
+            to={ { pathname: '/cart' } }
+            data-testid="shopping-cart-button"
+          >
+            <BsCart4 />
+            <span data-testid="shopping-cart-size">
+              (
+              {(cartCount) ? cartCount.reduce((acc, { count }) => acc + count, 0) : 0}
+            </span>
+            )
+          </Link>
+        </div>
+        <div className="main-container">
+          <h2 data-testid="product-detail-name">
+            {`${title}`}
+            {' '}
+            R$
+            <span>{price}</span>
+          </h2>
+          <div className="main-info">
+            <img src={ thumbnail } alt={ title } />
+            <ul>
+              {(attributes) && attributes.map(({ name, value_name: value }) => (
+                <li key={ name }>{`${name}: ${value}`}</li>
+              ))}
+            </ul>
+          </div>
+          <button
+            className="buy-button"
+            data-testid="product-detail-add-to-cart"
+            type="button"
+            onClick={ () => this.addItemCart(title) }
+          >
+            Comprar
+          </button>
+        </div>
+        <form>
+          <fieldset className="form-container">
+            <legend>Deixe Sua Avaliação:</legend>
+            <p>
+              Email:
+            </p>
+            {' '}
+            <input
+              type="email"
+              name="emailInput"
+              value={ emailInput }
+              onChange={ this.handleInput }
+            />
+            <p>
+              Comentário:
+              {' '}
+            </p>
+            <textarea
+              data-testid="product-detail-evaluation"
+              type="text"
+              name="commentInput"
+              value={ commentInput }
+              onChange={ this.handleInput }
+            />
+            <p>
+              Estrelas:
+              {' '}
+            </p>
+            <StarRatings
+              rating={ rating }
+              starRatedColor="blue"
+              changeRating={ this.changeRating }
+              numberOfStars={ 5 }
+              name="rating"
+              starDimension="20px"
+            />
+            <button
+              type="button"
+              onClick={ this.submitComment }
+              name={ title }
+              disabled={ isButtonDisabled }
+            >
+              Avaliar
+            </button>
+          </fieldset>
+        </form>
+        <div className="comments">
+          <h2>COMENTÁRIOS:</h2>
+          {(comments) && (
+            comments.map(({ name, rating: rating2, email, comment }) => (name === title)
+                && (
+                  <div key={ email } className="comment-container">
+                    <h3>{email}</h3>
+                    <h4>{comment}</h4>
+                    <StarRatings
+                      rating={ rating2 }
+                      starRatedColor="blue"
+                      numberOfStars={ 5 }
+                      name="rating"
+                      starDimension="20px"
+                      isSelectable={ false }
+                    />
+                  </div>
+                ))
+          )}
+        </div>
+      </div>
+    );
+  }
+}
+
+Details.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      title: PropTypes.string,
+      attributes: PropTypes.arrayOf(PropTypes.object),
+      thumbnail: PropTypes.string,
+      price: PropTypes.number,
+      availability: PropTypes.number.isRequired,
+    }),
+  }).isRequired,
+};
+
+export default Details;

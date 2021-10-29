@@ -1,0 +1,38 @@
+.card {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-content {
+  align-items: center;
+  border: black solid 1px;
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px rgb(104, 103, 103);
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  margin: 7px;
+  width: 23%;
+}
+
+.card-title {
+  font-weight: 900;
+  text-align: center;
+}
+
+.card-price {
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.card-img {
+  height: 240px;
+  width: 240px;
+}
+
+.card-button {
+  cursor: pointer;
+  margin: 20px;
+}

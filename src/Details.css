@@ -1,0 +1,91 @@
+.links {
+  display: flex;
+  font-size: 25px;
+  justify-content: space-around;
+  margin-top: 20px;
+  width: 10%;
+}
+
+.main-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.main-container h2 {
+  text-align: center;
+}
+
+.main-info {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+}
+
+.main-info img {
+  width: 150px;
+}
+
+.buy-button {
+  margin: auto;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-evenly;
+  padding: 20px;
+  width: 40%;
+}
+
+.form-container legend {
+  text-align: center;
+}
+
+.form-container button {
+  align-self: center;
+}
+
+.form-container input {
+  width: 545px;
+}
+
+.form-container p {
+  margin: 5px;
+}
+
+textarea {
+  height: 45px;
+  resize: none;
+  width: 545px;
+}
+
+.comments {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.comments h2 {
+  align-self: center;
+  margin: 20px;
+}
+
+.comment-container {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 20px;
+  width: 80%;
+}

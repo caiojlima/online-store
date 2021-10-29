@@ -1,0 +1,9 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories button {
+  cursor: pointer;
+  margin: 1px;
+}

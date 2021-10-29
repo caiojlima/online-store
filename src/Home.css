@@ -1,0 +1,65 @@
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.title {
+  color: blue;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+.header a {
+  font-size: 20px;
+}
+
+.search-container {
+  margin-right: 20px;
+}
+
+.subtitle-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.categories-container {
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(104, 103, 103);
+  display: inline-block;
+  height: 800px;
+  padding: 15px;
+  width: 15%;
+}
+
+.categories-title {
+  text-align: center;
+}
+
+.card-container {
+  align-items: flex-start;
+  display: flex;
+  margin-left: 20px;
+  width: 80%;
+}
