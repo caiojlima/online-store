@@ -24,7 +24,7 @@ class Card extends React.Component {
             <p className="card-price">
               R$
               <span>
-                { price }
+                { JSON.stringify(price).replace('.', ',') }
               </span>
             </p>
             <img src={ thumbnail } alt="imagem" className="card-img" />

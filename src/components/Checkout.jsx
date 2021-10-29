@@ -224,12 +224,15 @@ class Checkout extends React.Component {
           </div>
         </fieldset>
         <div className="btn-container">
-          <button
-            type="button"
-            onClick={ buttonCheckout }
-          >
-            Finalizar Compra
-          </button>
+          <Link to="/">
+            <button
+              type="button"
+              onClick={ buttonCheckout }
+              disabled={ true }
+            >
+              Finalizar Compra
+            </button>
+          </Link>
         </div>
       </fieldset>
     );

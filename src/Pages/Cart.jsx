@@ -77,7 +77,7 @@ class Cart extends React.Component {
                     .map(({ name, count, thumbnail, price }, index) => (
                       <div className="cart-card-container" key={ index }>
                         <h4 className="cart-title" data-testid="shopping-cart-product-name">{name}</h4>
-                        <h4 className="cart-price">R${ price }</h4>
+                        <h4 className="cart-price">R${ JSON.stringify(price).replace('.', ',') }</h4>
                         <img className="cart-img" src={ thumbnail } alt={ name } />
                         <div className="count-container">
                           <button
