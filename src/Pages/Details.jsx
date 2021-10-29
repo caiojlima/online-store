@@ -96,7 +96,7 @@ class Details extends Component {
             <img src={ thumbnail } alt={ title } />
             <ul>
               {(attributes) && attributes.map(({ name, value_name: value }) => (
-                <li key={ name }>{`${name}: ${value}`}</li>
+                <li key={ name }>{`${name}: ${(value) ? value : 0 }`}</li>
               ))}
             </ul>
           </div>
@@ -156,7 +156,7 @@ class Details extends Component {
           </fieldset>
         </form>
         <div className="comments">
-          <h2>COMENTÁRIOS:</h2>
+          <h2>AVALIAÇÕES E COMENTÁRIOS:</h2>
           {(comments) && (
             comments.map(({ name, rating: rating2, email, comment }) => (name === title)
                 && (

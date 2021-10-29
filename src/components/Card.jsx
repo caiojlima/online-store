@@ -18,11 +18,13 @@ class Card extends React.Component {
             data-testid="product"
             key={ id }
           >
-            <p className="card-title">
-              { title }
-            </p>
             <div className="card-img-container">
               <img src={ thumbnail } alt="imagem" className="card-img" />
+            </div>
+            <div className="title-container">
+              <p className="card-title">
+                { (title.length) ? title : `${title.split('').splice(0, 52).join('')}...` }
+              </p>
             </div>
             <div className="free-container">
               {(free
@@ -51,6 +53,7 @@ class Card extends React.Component {
               </button>
             </div>
             <Link
+              className="details"
               data-testid="product-detail-link"
               to={ {
                 pathname: `/details/${id}`,

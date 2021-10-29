@@ -16,10 +16,18 @@
   justify-content: space-around;
   margin: 7px;
   width: 23%;
+  padding-top: 15px;
   position: relative;
 }
 
+.title-container {
+  height: 30px;
+}
+
 .card-title {
+  text-align: justify;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
   font-weight: 900;
   text-align: center;
 }
@@ -84,4 +92,13 @@
 
 .card-button:active {
   background: rgb(129, 177, 52);
+}
+
+.details {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.details:hover {
+  color: rgb(45, 97, 156);
 }
