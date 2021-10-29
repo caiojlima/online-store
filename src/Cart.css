@@ -108,7 +108,7 @@
 .count-container {
   margin-top: 20px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: space-around;
 }
@@ -120,16 +120,19 @@
   font-size: 15px;
   font-family: 'Press Start 2P', cursive;
   color: rgb(68, 68, 68);
+  order: 2;
 }
 
 .cart-increase {
   color: green;
   font-size: 25px;
+  order: 3;
 }
 
 .cart-decrease {
   color: red;
   font-size: 30px;
+  order: 1;
 }
 
 .cart-increase, .cart-decrease {
@@ -159,7 +162,10 @@
 }
 
 .buy-container {
+  display: flex;
+  justify-content: center;
   padding-bottom: 20px;
+  width: 100%;
 }
 
 .buy-container button {
@@ -169,6 +175,7 @@
   color: white;
   font-weight: 900;
   height: 40px;
+  width: 200px;
   cursor: pointer;
 }
 

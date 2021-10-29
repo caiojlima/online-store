@@ -14,8 +14,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-bottom: 30px;
-  color: white;
+  border: rgb(175, 174, 174) solid 1px;
+  border-radius: 20px;
+  width: 60%;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: -5px 5px 5px rgb(82, 81, 81);
 }
 
 .main-container h2 {
@@ -32,8 +37,8 @@
   width: 150px;
 }
 
-.buy-button {
-  margin: auto;
+.details-btn {
+  margin-top: 25px;
 }
 
 form {
@@ -59,6 +64,27 @@ form {
 
 .form-container button {
   align-self: center;
+  background: rgb(65, 65, 65);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+  height: 30px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background: rgb(0, 0, 0);
+}
+
+.form-container button:disabled {
+  background: rgb(99, 99, 99);
+  cursor: initial;
+}
+
+.form-container button:disabled:hover {
+  background: rgb(99, 99, 99);
 }
 
 .form-container input {
@@ -93,5 +119,4 @@ textarea {
   margin: 10px;
   padding: 20px;
   width: 80%;
-  
 }

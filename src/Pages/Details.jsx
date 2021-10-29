@@ -61,7 +61,7 @@ class Details extends Component {
       const array = [comment];
       localStorage.setItem('comments', JSON.stringify(array));
     }
-    this.setState({ rating: 1, emailInput: '', commentInput: '' });
+    this.setState({ rating: 1, emailInput: '', commentInput: '', isButtonDisabled: true });
   }
 
   render() {
@@ -102,7 +102,7 @@ class Details extends Component {
             </ul>
           </div>
           <button
-            className="card-button"
+            className="card-button details-btn"
             data-testid="product-detail-add-to-cart"
             type="button"
             onClick={ () => this.addItemCart(title) }
@@ -140,13 +140,14 @@ class Details extends Component {
             </p>
             <StarRatings
               rating={ rating }
-              starRatedColor="blue"
+              starRatedColor="black"
               changeRating={ this.changeRating }
               numberOfStars={ 5 }
               name="rating"
               starDimension="20px"
             />
             <button
+              className="rate-btn"
               type="button"
               onClick={ this.submitComment }
               name={ title }
@@ -166,7 +167,7 @@ class Details extends Component {
                     <h4>{comment}</h4>
                     <StarRatings
                       rating={ rating2 }
-                      starRatedColor="blue"
+                      starRatedColor="black"
                       numberOfStars={ 5 }
                       name="rating"
                       starDimension="20px"
