@@ -60,10 +60,10 @@ class Home extends Component {
       state: { queryInput, result } } = this;
     return (
       <div>
-        <div className="title-container">
-          <h1 className="title">Lojinha do seu Zé</h1>
-        </div>
         <div className="header">
+          <h1 className="title">ONLINE STORE</h1>
+        </div>
+        <div className="nav">
           <div className="search-container">
             <input
               className="search-input"
@@ -82,22 +82,27 @@ class Home extends Component {
               Buscar
             </button>
           </div>
-          <Link
-            to={ { pathname: '/cart' } }
-            data-testid="shopping-cart-button"
-          >
-            <BsCart4 />
-            (
-            <span data-testid="shopping-cart-size">
-              {(cartCount) ? cartCount.reduce((acc, { count }) => acc + count, 0) : 0}
-            </span>
-            )
-          </Link>
+          <div className="cart-link-container">
+              <Link
+              className="cart-link"
+              to={ { pathname: '/cart' } }
+              data-testid="shopping-cart-button"
+              >
+              <BsCart4 />
+              (
+              <span data-testid="shopping-cart-size">
+                {(cartCount) ? cartCount.reduce((acc, { count }) => acc + count, 0) : 0}
+              </span>
+              )
+              </Link>
+            </div>  
         </div>
         <div className="subtitle-container">
-          <p data-testid="home-initial-message" className="subtitle">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
+          {(!result) && (
+            <p data-testid="home-initial-message" className="subtitle">
+              Busque uma palavra-chave ou selecione uma categoria
+            </p>
+          )}
         </div>
         <div className="main">
           <div className="categories-container">
