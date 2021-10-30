@@ -45,7 +45,6 @@ a {
 
 .cart-link {
   font-size: 30px;
-  transition: ease 0.1s;
   color: white;
 }
 
@@ -97,6 +96,7 @@ a {
   font-size: 20px;
   font-weight: 900;
   color: white;
+  text-shadow: 1px 1px 1px black;
 }
 
 .main {
@@ -117,11 +117,12 @@ a {
 }
 
 .categories-title {
+  font-family: 'Rajdhani', sans-serif;
   text-align: center;
-  color: rgb(78, 78, 78);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 900;
-  text-shadow: 3px 3px 5px gray;
+  text-shadow: 1px 1px 1px black;
+  color: white;
 }
 
 .card-container {

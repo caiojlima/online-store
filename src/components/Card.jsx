@@ -23,7 +23,7 @@ class Card extends React.Component {
             </div>
             <div className="title-container">
               <p className="card-title">
-                { (title.length) ? title : `${title.split('').splice(0, 52).join('')}...` }
+                { (title.length < 59) ? title : `${title.split('').splice(0, 59).join('')}...` }
               </p>
             </div>
             <div className="free-container">

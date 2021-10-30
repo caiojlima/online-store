@@ -6,11 +6,13 @@
 .categories button {
   color: white;
   font-weight: 900;
-  background: gray;
+  background: rgb(43, 43, 43);
   border: none;
   border-radius: 3px;
   cursor: pointer;
   margin: 5px;
+  text-shadow: 1px 1px 1px black;
+  padding: 5px;
 }
 
 .categories button:hover {
@@ -18,5 +20,5 @@
 }
 
 .categories button:focus {
-  background: rgb(65, 65, 65);
+  background: rgb(100, 100, 100);
 }
