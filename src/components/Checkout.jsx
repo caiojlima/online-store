@@ -56,9 +56,9 @@ class Checkout extends React.Component {
       } } = this;
     return (
       <fieldset className="form-fieldset">
-        <div className="links">
-          <Link to="/cart"><BsFillArrowLeftCircleFill /></Link>
-          <Link to="/"><GoHome /></Link>
+        <div className="links-container">
+          <Link className="link" to="/cart"><BsFillArrowLeftCircleFill /></Link>
+          <Link className="link" to="/"><GoHome /></Link>
         </div>
         <fieldset>
           <h4>Revise seus produtos</h4>

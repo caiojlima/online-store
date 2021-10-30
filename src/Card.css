@@ -8,7 +8,7 @@
 
 .card-content {
   align-items: center;
-  border: rgb(175, 174, 174) solid 1px;
+  border: rgb(46, 46, 46) solid 2px;
   border-radius: 7px;
   box-shadow: -2px 5px 5px rgb(136, 136, 136);
   display: flex;
@@ -19,7 +19,21 @@
   width: 23%;
   padding-top: 15px;
   position: relative;
-  background-color: white;
+  background: rgb(168,165,164);
+  background: linear-gradient(29deg, rgba(168,165,164,1) 36%, rgba(92,90,90,1) 69%);
+}
+
+.card-img-container {
+  width: 80%;
+  height: 130px;
+  border: 2px solid rgb(194, 192, 192);
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px black;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
 }
 
 .title-container {
@@ -28,10 +42,12 @@
 
 .card-title {
   text-align: justify;
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 900;
   text-align: center;
+  text-shadow: 1px 1px 1px black;
 }
 
 .card-pay-container {
@@ -40,24 +56,12 @@
 }
 
 .card-price {
-  color: rgb(2, 194, 2);
+  color: rgb(217, 255, 217);
   font-size: 20px;
   font-weight: 900;
   align-self: center;
   margin-left: 10px;
-}
-
-.card-img-container {
-  width: 80%;
-  height: 130px;
-  border: 2px solid rgb(194, 192, 192);
-  border-radius: 5px;
-  box-shadow: -5px 5px 5px gray;
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
+  text-shadow: 0px 1px 1px rgb(94, 94, 94);
 }
 
 .free-container {
@@ -70,7 +74,7 @@
   align-items: center;
   font-size: 14px;
   font-weight: 900;
-  color: rgb(68, 94, 212);
+  color: rgb(0, 0, 0);
 }
 
 .free-icon {
@@ -79,28 +83,29 @@
 }
 
 .card-button {
-  background: rgb(2, 194, 2);
+  background: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: 900;
   height: 40px;
   cursor: pointer;
 }
 
 .card-button:hover {
-  background: rgb(1, 155, 1);
+  background: rgb(83, 83, 83);
 }
 
 .card-button:active {
-  background: rgb(129, 177, 52);
+  background: rgb(136, 136, 136);
 }
 
 .details {
   font-size: 15px;
   font-weight: 900;
+  color: black;
 }
 
 .details:hover {
-  color: rgb(45, 97, 156);
+  color: rgb(83, 83, 83);
 }

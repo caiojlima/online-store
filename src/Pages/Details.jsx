@@ -71,8 +71,8 @@ class Details extends Component {
     const comments = JSON.parse(localStorage.getItem('comments'));
     return (
       <div>
-        <div className="links">
-          <Link to="/"><BsFillArrowLeftCircleFill /></Link>
+        <div className="links-container">
+          <Link className="link" to="/"><BsFillArrowLeftCircleFill /></Link>
           <Link
             className="cart-link" 
             to={ { pathname: '/cart' } }
@@ -145,6 +145,7 @@ class Details extends Component {
               numberOfStars={ 5 }
               name="rating"
               starDimension="20px"
+              starHoverColor="black"
             />
             <button
               className="rate-btn"

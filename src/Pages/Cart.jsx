@@ -50,8 +50,8 @@ class Cart extends React.Component {
       const nameArray = JSON.parse(stringArray);
       return (
         <div>
-          <div className="link">
-            <Link to="/"><BsFillArrowLeftCircleFill /></Link>
+          <div className="link-container">
+            <Link className="link" to="/"><BsFillArrowLeftCircleFill /></Link>
           </div>
           <div className="main-cart-content">
             {(stringArray) && (

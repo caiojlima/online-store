@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { BsCart4 } from 'react-icons/bs';
+import { BsCart4, BsSearch } from 'react-icons/bs';
 import Categories from '../components/Categories';
 import Card from '../components/Card';
 import { getProductsFromCategoryAndQuery } from '../services/api';
@@ -79,7 +79,7 @@ class Home extends Component {
               data-testid="query-button"
               onClick={ search }
             >
-              Buscar
+              <BsSearch />
             </button>
           </div>
           <div className="cart-link-container">
