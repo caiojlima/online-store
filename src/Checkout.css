@@ -7,15 +7,57 @@
   color: white;
 }
 
-.payment-method {
-  align-items: center;
+.section-title {
+  font-size: 20px;
+  align-self: center;
+}
+
+.review-products {
+  display: flex;
+  flex-direction: column;
+}
+
+.buyer-infos {
+  margin: 20px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.pay-title {
-  align-self: flex-start;
+.buyer-infos input, select {
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.input-email {
+  width: 240px;
+}
+
+.input-cpf {
+  width: 255px;
+}
+
+.input-phone {
+  width: 215px;
+}
+
+.input-cep {
+  width: 255px;
+}
+
+.input-adress {
+  width: 215px;
+}
+
+.input-city {
+  width: 230px;
+}
+
+.payment-method {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .pay {
@@ -28,7 +70,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 15px;
   justify-content: center;
 }
 

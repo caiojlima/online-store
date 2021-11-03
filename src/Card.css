@@ -16,7 +16,7 @@
   height: 400px;
   justify-content: space-around;
   margin: 7px;
-  width: 23%;
+  width: 17%;
   padding-top: 15px;
   position: relative;
   background: rgb(168,165,164);
@@ -56,7 +56,7 @@
 
 .card-price {
   color: rgb(217, 255, 217);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 900;
   align-self: center;
   margin-left: 10px;

@@ -31,6 +31,7 @@ class Checkout extends React.Component {
   }
 
   buttonCheckout = () => {
+    localStorage.removeItem('items')
     this.setState({
       nomeCompleto: '',
       email: '',
@@ -60,8 +61,8 @@ class Checkout extends React.Component {
           <Link className="link" to="/cart"><BsFillArrowLeftCircleFill /></Link>
           <Link className="link" to="/"><GoHome /></Link>
         </div>
-        <fieldset>
-          <h4>Revise seus produtos</h4>
+        <fieldset className="review-products">
+          <h4 className="section-title">Revise seus produtos</h4>
           <div>
             <div>
               {nameArray
@@ -75,8 +76,8 @@ class Checkout extends React.Component {
             </div>
           </div>
         </fieldset>
-        <fieldset>
-          <h4>Informações do Comprador</h4>
+        <fieldset className="buyer-infos">
+          <h4 className="section-title">Informações do Comprador</h4>
           <div>
             Nome Completo
             <input
@@ -99,6 +100,7 @@ class Checkout extends React.Component {
               maxLength="50"
               required
               onChange={ onChange }
+              className="input-email"
             />
           </div>
           <div>
@@ -111,6 +113,7 @@ class Checkout extends React.Component {
               maxLength="11"
               required
               onChange={ onChange }
+              className="input-cpf"
             />
           </div>
           <div>
@@ -122,6 +125,7 @@ class Checkout extends React.Component {
               value={ telefone }
               required
               onChange={ onChange }
+              className="input-phone"
             />
           </div>
           <div>
@@ -133,6 +137,7 @@ class Checkout extends React.Component {
               value={ CEP }
               required
               onChange={ onChange }
+              className="input-cep"
             />
           </div>
           <div>
@@ -145,6 +150,7 @@ class Checkout extends React.Component {
               maxLength="200"
               required
               onChange={ onChange }
+              className="input-adress"
             />
           </div>
           <div>
@@ -156,6 +162,7 @@ class Checkout extends React.Component {
               maxLength="28"
               required
               onChange={ onChange }
+              className="input-city"
             />
           </div>
           <div>
@@ -177,7 +184,7 @@ class Checkout extends React.Component {
         </fieldset>
         <fieldset className="payment-method">
           <div className="pay-title">
-            <h4>Método de pagamento</h4>
+            <h4 className="section-title">Método de pagamento</h4>
           </div>
           <div className="pay">
             <label htmlFor="boleto">
@@ -228,7 +235,7 @@ class Checkout extends React.Component {
             <button
               type="button"
               onClick={ buttonCheckout }
-              disabled={ true }
+              disabled={ false }
             >
               Finalizar Compra
             </button>
