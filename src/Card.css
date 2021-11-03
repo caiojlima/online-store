@@ -36,7 +36,9 @@
 }
 
 .title-container {
-  height: 30px;
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
 }
 
 .card-title {

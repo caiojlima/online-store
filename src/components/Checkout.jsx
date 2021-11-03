@@ -26,7 +26,9 @@ class Checkout extends React.Component {
       CEP: '',
       adress: '',
       city: '',
-      stateCountry: 'Selecione seu estado:',
+      stateCountry: 'Selecione seu Estado:',
+      isButtonDisabled: true,
+      pay: ''
     };
   }
 
@@ -40,12 +42,23 @@ class Checkout extends React.Component {
       CEP: '',
       adress: '',
       city: '',
-      stateCountry: 'Selecione seu estado:',
+      stateCountry: 'Selecione seu Estado:',
+      isButtonDisabled: true,
+      pay: '',
     });
   }
 
-  onChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+  buttonValidation = () => {
+    const { nomeCompleto, email, CPF, telefone, CEP, adress, city, stateCountry, pay } = this.state;
+    if (nomeCompleto && email.includes('@' && '.com') && CPF.length === 11 && !CPF.match(/[a-z]/i) && telefone.length === 11 && !telefone.match(/[a-z]/i) && CEP.length  === 8 && !CEP.match(/[a-z]/i) && adress && city && stateCountry !== 'Selecione seu Estado:' && pay) {
+      this.setState({ isButtonDisabled: false, })
+    } else {
+      this.setState({ isButtonDisabled: true, })
+    }
+  }
+
+  onChange = ({ target: { name, value } }) => { 
+    this.setState({ [name]: value }, this.buttonValidation);
   }
 
   render() {
@@ -53,7 +66,7 @@ class Checkout extends React.Component {
     const nameArray = JSON.parse(stringArray);
     const { onChange, buttonCheckout,
       state: {
-        email, CPF, telefone, CEP, adress, city, nomeCompleto, stateCountry,
+        email, CPF, telefone, CEP, adress, city, nomeCompleto, stateCountry, isButtonDisabled,
       } } = this;
     return (
       <fieldset className="form-fieldset">
@@ -68,9 +81,9 @@ class Checkout extends React.Component {
               {nameArray
                 .map(({ name, count, price }) => (
                   <div key={ name }>
-                    <h4>{ name }</h4>
-                    <p>Quantidade: { count }x</p>
-                    <p>R${(Number(price) * count).toFixed(2).replace('.', ',')}</p>
+                    <h4 className="prod-name">{ name }</h4>
+                    <p className="prod-qnt">Quantidade: { count }x</p>
+                    <p className="prod-price">R${(Number(price) * count).toFixed(2).replace('.', ',')}</p>
                   </div>
                 ))}
             </div>
@@ -126,6 +139,7 @@ class Checkout extends React.Component {
               required
               onChange={ onChange }
               className="input-phone"
+              maxLength="11"
             />
           </div>
           <div>
@@ -138,6 +152,7 @@ class Checkout extends React.Component {
               required
               onChange={ onChange }
               className="input-cep"
+              maxLength="8"
             />
           </div>
           <div>
@@ -173,7 +188,7 @@ class Checkout extends React.Component {
               value={ stateCountry }
               onChange={ onChange }
             >
-              <option>Selecione seu Estado:</option>
+              <option disabled>Selecione seu Estado:</option>
               {
                 brazilStates.map((value, key) => (
                   <option key={ key }>{value}</option>
@@ -194,6 +209,8 @@ class Checkout extends React.Component {
                 type="radio"
                 name="pay"
                 id="boleto"
+                value="boleto"
+                onChange={ onChange }
               />
             </label>
             <label htmlFor="cartaoDeCredito">
@@ -203,6 +220,8 @@ class Checkout extends React.Component {
                 type="radio"
                 name="pay"
                 id="cartaoDeCredito"
+                value="credito"
+                onChange={ onChange }
               />
             </label>
             <label htmlFor="cartaoDeDebito">
@@ -212,6 +231,8 @@ class Checkout extends React.Component {
                 type="radio"
                 name="pay"
                 id="cartaoDeDebito"
+                value="debito"
+                onChange={ onChange }
               />
             </label>
             <label htmlFor="pix">
@@ -225,6 +246,8 @@ class Checkout extends React.Component {
                 type="radio"
                 name="pay"
                 id="pix"
+                value="pix"
+                onChange={ onChange }
               />
             </label>
           </div>
@@ -235,7 +258,7 @@ class Checkout extends React.Component {
             <button
               type="button"
               onClick={ buttonCheckout }
-              disabled={ false }
+              disabled={ isButtonDisabled }
             >
               Finalizar Compra
             </button>
