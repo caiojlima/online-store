@@ -17,6 +17,7 @@ class Home extends Component {
       loading: false,
       email: '',
       senha: '',
+      sort: 'default',
       placeholder:'',
       login: false,
       user: '',
@@ -50,7 +51,7 @@ class Home extends Component {
     this.forceUpdate();
   };  
 
-  sortItens = ({ target: { value } }) => {
+  sortItens = (value) => {
     const { result } = this.state;
     if ( value === 'maior') {
       result.sort((a, b) => b.price - a.price);
@@ -71,6 +72,7 @@ class Home extends Component {
   }
 
   search = async ({ target: { name } }) => {
+    this.forceUpdate();
     if (!name) {
       const { queryInput } = this.state;
       this.setState({ loading: true });
@@ -85,6 +87,9 @@ class Home extends Component {
 
   inputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
+    if (name === 'sort') {
+      this.sortItens(value);
+    }
   }
 
   loginCheck = () => {
@@ -106,15 +111,28 @@ class Home extends Component {
     }
   }
 
+  logout = () => {
+    sessionStorage.removeItem('logged');
+    this.setState({ login: false, user: '', email: '', senha: '' });
+  }
+
   render() {
     const cartCount = JSON.parse(localStorage.getItem('items'));
-    const { inputChange, search, sortItens, loginCheck,
-      state: { queryInput, result, loading, email, senha, placeholder, login, user } } = this;
+    const { inputChange, search, loginCheck, logout,
+      state: { queryInput, result, loading, email, senha, placeholder, login, user, sort } } = this;
     return (
       <div>
         <div className="header">
           <h1 className="title">ONLINE STORE</h1>
-          {(login) ? <h3 className="welcome">Bem Vindo: {`${user}`}!</h3> : (
+          {(login) ? (
+            <div className="welcome-container">
+              <h3 className="welcome">Bem Vindo: {`${user}`}!</h3>
+              <div className="welcome-btn-container">
+                <Link  to="/profile/edit"><button className="edit-profile" type="button">Editar Perfil</button></Link>
+                <button className="edit-profile" type="button" onClick={ logout }>Sair</button>
+              </div>
+            </div>
+          ) : (
             <form className="login-container">
             <div className="input-container">
               <label htmlFor="email">
@@ -128,7 +146,7 @@ class Home extends Component {
               <button onClick={ loginCheck } type="button">Entrar</button>
               </div>
             <div>
-              <p>Novo? <Link to="/profile/new">Cadastre-se</Link></p>
+              <p>Novo? <Link to="/profile/new">Cadastre-se!</Link></p>
             </div>
           </form>
           )}
@@ -173,7 +191,7 @@ class Home extends Component {
               Busque uma palavra-chave ou selecione uma categoria
             </p>
           ) : (
-            <select className="sort" name="sort" id="sort" defaultValue="default" onChange={ sortItens }>
+            <select className="sort" name="sort" id="sort" defaultValue={ sort } onChange={ inputChange }>
               <option value="default" disabled>Ordene por:</option>
               <option value="a-z">A-Z</option>
               <option value="z-a">Z-A</option>

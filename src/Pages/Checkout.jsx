@@ -15,28 +15,27 @@ const brazilStates = ['Acre (AC)', 'Alagoas (AL)', 'Amapá (AP)',
   'Tocantins (TO)'];
 
 class Checkout extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    const { name, lastname, email } = JSON.parse(sessionStorage.getItem('logged'));
-
-    this.state = {
-      nomeCompleto: `${name} ${lastname}`,
-      email,
-      CPF: '',
-      telefone: '',
-      CEP: '',
-      adress: '',
-      city: '',
-      stateCountry: 'Selecione seu Estado:',
-      isButtonDisabled: true,
-      pay: '',
-      logged: true,
-    };
-  }
-
-  componentDidMount() {
-    this.ifIsLogged();
+    if (!sessionStorage.getItem('logged')) {
+      this.state = { logged: false };
+    } else {
+      const { name, lastname, email } = JSON.parse(sessionStorage.getItem('logged'));
+      this.state = {
+        nomeCompleto: `${name} ${lastname}`,
+        email,
+        CPF: '',
+        telefone: '',
+        CEP: '',
+        adress: '',
+        city: '',
+        stateCountry: 'Selecione seu Estado:',
+        isButtonDisabled: true,
+        pay: '',
+        logged: true,
+      };
+    }
   }
 
   buttonCheckout = () => {
@@ -68,19 +67,10 @@ class Checkout extends React.Component {
     this.setState({ [name]: value }, this.buttonValidation);
   }
 
-  ifIsLogged = () => {
-    if (!sessionStorage.getItem('logged')) {
-      this.setState({ logged: false })
-    }
-  }
-
   render() {
     const stringArray = localStorage.getItem('items');
     const nameArray = JSON.parse(stringArray);
-    const { onChange, buttonCheckout,
-      state: {
-        email, CPF, telefone, CEP, adress, city, nomeCompleto, stateCountry, isButtonDisabled, logged,
-      } } = this;
+    const { logged } = this.state;
     if (!logged) {
       return (
         <div className="login-popout">
@@ -89,6 +79,10 @@ class Checkout extends React.Component {
         </div>
       );
     } 
+    const { onChange, buttonCheckout,
+      state: {
+        email, CPF, telefone, CEP, adress, city, nomeCompleto, stateCountry, isButtonDisabled,
+      } } = this;
     return (
       <fieldset className="form-fieldset">
         <div className="links-container">

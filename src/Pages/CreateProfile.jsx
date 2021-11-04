@@ -47,6 +47,7 @@ class CreateProfile extends Component {
       const stringfyArray = JSON.stringify([object]);
       localStorage.setItem('users', stringfyArray);
     }
+    sessionStorage.setItem('logged', JSON.stringify(object));
   }
 
   render() {
