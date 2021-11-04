@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BsCart4, BsSearch } from 'react-icons/bs';
 import Categories from '../components/Categories';
 import Card from '../components/Card';
+import Loading from '../components/Loading';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import '../Home.css';
 
@@ -13,6 +14,7 @@ class Home extends Component {
     this.state = {
       queryInput: '',
       result: undefined,
+      loading: false,
     };
   }
 
@@ -42,11 +44,13 @@ class Home extends Component {
   search = async ({ target: { name } }) => {
     if (!name) {
       const { queryInput } = this.state;
+      this.setState({ loading: true });
       const { results } = await getProductsFromCategoryAndQuery('', queryInput);
-      this.setState({ result: results });
+      this.setState({ result: results, loading: false });
     } else {
+      this.setState({ loading: true });
       const { results } = await getProductsFromCategoryAndQuery('', name);
-      this.setState({ result: results });
+      this.setState({ result: results, loading: false });
     }
   }
 
@@ -57,7 +61,7 @@ class Home extends Component {
   render() {
     const cartCount = JSON.parse(localStorage.getItem('items'));
     const { inputChange, search,
-      state: { queryInput, result } } = this;
+      state: { queryInput, result, loading } } = this;
     return (
       <div>
         <div className="header">
@@ -110,6 +114,7 @@ class Home extends Component {
             <Categories search={ search } />
           </div>
           <div className="card-container">
+            { (loading) && <Loading /> }
             { (result) && <Card addItemCart={ this.addItemCart } result={ result } /> }
           </div>
         </div>

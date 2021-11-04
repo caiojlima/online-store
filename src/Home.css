@@ -127,7 +127,9 @@ a {
 
 .card-container {
   align-items: flex-start;
+  justify-content: center;
   display: flex;
   margin-left: 20px;
   width: 100%;
+  position: relative;
 }
