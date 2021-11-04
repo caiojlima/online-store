@@ -90,6 +90,8 @@ a {
   display: flex;
   justify-content: center;
   margin: 10px;
+  height: 30px;
+  align-items: center;
 }
 
 .subtitle {
@@ -97,6 +99,11 @@ a {
   font-weight: 900;
   color: white;
   text-shadow: 1px 1px 1px black;
+}
+
+.sort {
+  width: 10%;
+  text-align: center;
 }
 
 .main {

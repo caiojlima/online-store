@@ -39,7 +39,24 @@ class Home extends Component {
       localStorage.setItem('items', array);
     }
     this.forceUpdate();
-  };
+  };  
+
+  sortItens = ({ target: { value } }) => {
+    const { result } = this.state;
+    if ( value === 'maior') {
+      result.sort((a, b) => b.price - a.price);
+      this.setState({ result: result });
+    } else if ( value === 'menor') {
+      result.sort((a, b) => a.price - b.price);
+      this.setState({ result: result });
+    } else if (value === 'a-z') {
+      result.sort((a, b) => a.title.localeCompare(b.title));
+      this.setState({ result: result });
+    } else {
+      result.sort((a, b) => -(a.title.localeCompare(b.title)));
+      this.setState({ result: result });
+    }
+  }
 
   search = async ({ target: { name } }) => {
     if (!name) {
@@ -60,7 +77,7 @@ class Home extends Component {
 
   render() {
     const cartCount = JSON.parse(localStorage.getItem('items'));
-    const { inputChange, search,
+    const { inputChange, search, sortItens,
       state: { queryInput, result, loading } } = this;
     return (
       <div>
@@ -102,10 +119,18 @@ class Home extends Component {
             </div>  
         </div>
         <div className="subtitle-container">
-          {(!result) && (
+          {(!result) ? (
             <p data-testid="home-initial-message" className="subtitle">
               Busque uma palavra-chave ou selecione uma categoria
             </p>
+          ) : (
+            <select className="sort" name="sort" id="sort" onChange={ sortItens }>
+              <option selected disabled>Ordene por:</option>
+              <option value="a-z">A-Z</option>
+              <option value="z-a">Z-A</option>
+              <option value="menor">Menor Valor</option>
+              <option value="maior">Maior Valor</option>
+            </select>
           )}
         </div>
         <div className="main">
