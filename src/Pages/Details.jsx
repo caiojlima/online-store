@@ -140,7 +140,7 @@ class Details extends Component {
             </p>
             <StarRatings
               rating={ rating }
-              starRatedColor="white"
+              starRatedColor="rgb(61, 128, 75)"
               starEmptyColor="gray"
               changeRating={ this.changeRating }
               numberOfStars={ 5 }
@@ -169,7 +169,8 @@ class Details extends Component {
                     <h4>{comment}</h4>
                     <StarRatings
                       rating={ rating2 }
-                      starRatedColor="white"
+                      starRatedColor="rgb(61, 128, 75)"
+                      starEmptyColor="gray"
                       numberOfStars={ 5 }
                       name="rating"
                       starDimension="20px"
