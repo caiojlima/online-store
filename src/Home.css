@@ -12,8 +12,8 @@
   color: rgb(41, 41, 41);
   font-family: 'Rajdhani', sans-serif;
   font-size: 50px;
-  text-shadow: 3px 3px 2px rgb(56, 56, 56);
-  -webkit-text-stroke: 1px rgb(153, 153, 153);
+  text-shadow: 3px 3px 2px rgb(3, 146, 39);
+  -webkit-text-stroke: 1px rgb(61, 128, 75);
 
 }
 
@@ -89,7 +89,7 @@ a {
 .search-button {
   color: white;
   font-weight: 900;
-  background: rgb(87, 87, 87);
+  background-color: rgb(61, 128, 75);
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -99,7 +99,7 @@ a {
 }
 
 .search-button:hover {
-  background: rgb(105, 105, 105)
+  background: rgb(3, 146, 39)
 }
 
 .search-button:active {
@@ -135,11 +135,10 @@ a {
 .categories-container {
   border: 2px solid black;
   border-radius: 10px;
-  box-shadow: -7px -7px 5px rgb(61, 61, 61);
   display: inline-block;
   padding: 10px 10px 10px 0px;
   width: 15%;
-  background-color: rgb(119, 119, 119);
+  background-color: rgb(190, 190, 190);
   font-family: 'Rajdhani', sans-serif;
 }
 
@@ -148,7 +147,8 @@ a {
   text-align: center;
   font-size: 22px;
   font-weight: 900;
-  color: white;
+  color: rgb(61, 128, 75);
+  letter-spacing: 2px;
 }
 
 .card-container {

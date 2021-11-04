@@ -18,9 +18,11 @@ class Checkout extends React.Component {
   constructor() {
     super();
 
+    const { name, lastname, email } = JSON.parse(sessionStorage.getItem('logged'));
+
     this.state = {
-      nomeCompleto: '',
-      email: '',
+      nomeCompleto: `${name} ${lastname}`,
+      email,
       CPF: '',
       telefone: '',
       CEP: '',
@@ -94,7 +96,7 @@ class Checkout extends React.Component {
           <Link className="link" to="/"><GoHome /></Link>
         </div>
         <fieldset className="review-products">
-          <h4 className="section-title">Revise seus produtos</h4>
+          <h4 className="section-title">{JSON.parse(sessionStorage.getItem('logged')).name}, revise seus produtos!</h4>
           <div>
             <div>
               {nameArray
