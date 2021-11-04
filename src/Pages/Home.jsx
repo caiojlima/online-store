@@ -52,8 +52,11 @@ class Home extends Component {
     } else if (value === 'a-z') {
       result.sort((a, b) => a.title.localeCompare(b.title));
       this.setState({ result: result });
-    } else {
+    } else if (value === 'z-a') {
       result.sort((a, b) => -(a.title.localeCompare(b.title)));
+      this.setState({ result: result });
+    } else {
+      result.sort((a, b) => b.sold_quantity - a.sold_quantity);
       this.setState({ result: result });
     }
   }
@@ -124,12 +127,13 @@ class Home extends Component {
               Busque uma palavra-chave ou selecione uma categoria
             </p>
           ) : (
-            <select className="sort" name="sort" id="sort" onChange={ sortItens }>
-              <option selected disabled>Ordene por:</option>
+            <select className="sort" name="sort" id="sort" defaultValue="default" onChange={ sortItens }>
+              <option value="default" disabled>Ordene por:</option>
               <option value="a-z">A-Z</option>
               <option value="z-a">Z-A</option>
               <option value="menor">Menor Valor</option>
               <option value="maior">Maior Valor</option>
+              <option value="vendidos">Mais Vendidos</option>
             </select>
           )}
         </div>
