@@ -15,6 +15,11 @@ class Home extends Component {
       queryInput: '',
       result: undefined,
       loading: false,
+      email: '',
+      senha: '',
+      placeholder:'',
+      login: false,
+      user: '',
     };
   }
 
@@ -78,14 +83,43 @@ class Home extends Component {
     this.setState({ [name]: value });
   }
 
+  loginCheck = () => {
+    const { email, senha } = this.state;
+    const arrayUsers = JSON.parse(localStorage.getItem('users'));
+    const user = arrayUsers.find(user => user.email === email);
+    if (user && user.password === senha) {
+      this.setState({ login:true, user: `${user.name} ${user.lastname}` });
+    } else {
+      this.setState({ email:'', senha:'', placeholder: 'DADOS INVÁLIDOS!' });
+    }
+  }
+
   render() {
     const cartCount = JSON.parse(localStorage.getItem('items'));
-    const { inputChange, search, sortItens,
-      state: { queryInput, result, loading } } = this;
+    const { inputChange, search, sortItens, loginCheck,
+      state: { queryInput, result, loading, email, senha, placeholder, login, user } } = this;
     return (
       <div>
         <div className="header">
           <h1 className="title">ONLINE STORE</h1>
+          {(login) ? <h3 className="welcome">Bem Vindo: {`${user}`}!</h3> : (
+            <form className="login-container">
+            <div className="input-container">
+              <label htmlFor="email">
+                Email:
+                <input placeholder={ placeholder } type="text" name="email" onChange={ inputChange } value={ email } />
+              </label>
+              <label htmlFor="senha">
+                Senha:
+                <input placeholder={ placeholder } type="password" name="senha" onChange={ inputChange } value={ senha } />
+              </label>
+              <button onClick={ loginCheck } type="button">Entrar</button>
+              </div>
+            <div>
+              <p>Novo? <Link to="/profile/new">Cadastre-se</Link></p>
+            </div>
+          </form>
+          )}
         </div>
         <div className="nav">
           <div className="search-container">

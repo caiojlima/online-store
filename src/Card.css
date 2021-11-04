@@ -8,9 +8,8 @@
 
 .card-content {
   align-items: center;
-  border: rgb(46, 46, 46) solid 2px;
   border-radius: 7px;
-  box-shadow: -2px 5px 5px rgb(136, 136, 136);
+  box-shadow: -5px 4px 4px -3px rgba(255,255,255,0.58);
   display: flex;
   flex-direction: column;
   height: 400px;
@@ -19,7 +18,12 @@
   width: 17%;
   padding-top: 15px;
   position: relative;
-  background: rgb(168,165,164);
+  background: rgb(0, 0, 0);
+  transition: ease-in-out 0.5s;
+}
+
+.card-content:hover {
+  transform: scale(1.05);
 }
 
 .card-img-container {
@@ -57,7 +61,7 @@
 }
 
 .card-price {
-  color: rgb(217, 255, 217);
+  color: rgb(255, 255, 255);
   font-size: 15px;
   font-weight: 900;
   align-self: center;
@@ -75,7 +79,7 @@
   align-items: center;
   font-size: 14px;
   font-weight: 900;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .free-icon {
@@ -84,7 +88,7 @@
 }
 
 .card-button {
-  background: black;
+  background: rgb(61, 128, 75);
   border: none;
   border-radius: 5px;
   color: rgb(255, 255, 255);
@@ -94,19 +98,19 @@
 }
 
 .card-button:hover {
-  background: rgb(83, 83, 83);
+  background: rgb(3, 146, 39);
 }
 
 .card-button:active {
-  background: rgb(136, 136, 136);
+  background: rgb(4, 27, 160);
 }
 
 .details {
   font-size: 15px;
   font-weight: 900;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .details:hover {
-  color: rgb(83, 83, 83);
+  color: rgb(46, 91, 216);
 }

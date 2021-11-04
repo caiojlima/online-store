@@ -140,12 +140,13 @@ class Details extends Component {
             </p>
             <StarRatings
               rating={ rating }
-              starRatedColor="black"
+              starRatedColor="white"
+              starEmptyColor="gray"
               changeRating={ this.changeRating }
               numberOfStars={ 5 }
               name="rating"
               starDimension="20px"
-              starHoverColor="black"
+              starHoverColor="white"
             />
             <button
               className="rate-btn"
@@ -168,7 +169,7 @@ class Details extends Component {
                     <h4>{comment}</h4>
                     <StarRatings
                       rating={ rating2 }
-                      starRatedColor="black"
+                      starRatedColor="white"
                       numberOfStars={ 5 }
                       name="rating"
                       starDimension="20px"

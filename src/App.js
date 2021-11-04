@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import Details from './Pages/Details';
 import Checkout from './components/Checkout';
+import CreateProfile from './Pages/CreateProfile';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/checkout" component={ Checkout } />
         <Route path="/cart" component={ Cart } />
         <Route path="/details/:id" component={ Details } />
+        <Route path="/profile/new" component= { CreateProfile } />
         <Route exact path="/" component={ Home } />
       </Switch>
     </BrowserRouter>

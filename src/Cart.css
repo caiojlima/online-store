@@ -81,11 +81,11 @@
   flex-wrap: wrap;
   align-items: center;
   padding: 20px 20px;
-  border: rgb(175, 174, 174) solid 1px;
   border-radius: 20px;
   margin: 30px;
   width: 15%;
-  background: rgb(168,165,164);
+  background: rgb(0, 0, 0);
+  box-shadow: -5px 4px 4px -3px rgba(255,255,255,0.58);
 }
 
 .cart-img {
@@ -108,7 +108,7 @@
 }
 
 .cart-price {
-  color: rgb(217, 255, 217);
+  color: rgb(255, 255, 255);
   font-size: 20px;
   font-weight: 900;
   align-self: center;
@@ -125,25 +125,25 @@
 
 .cart-quantity {
   margin: 1px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(255, 255, 255);
   padding: 10px;
   font-size: 15px;
   font-family: 'Press Start 2P', cursive;
-  color: rgb(68, 68, 68);
+  color: rgb(255, 255, 255);
   order: 2;
   box-shadow: 1px 1px 3px black;
 }
 
 .cart-increase {
   background-color: unset;
-  color: rgb(0, 0, 0);
+  color: rgb(1, 85, 1);
   font-size: 25px;
   order: 3;
 }
 
 .cart-decrease {
   background-color: unset;
-  color: rgb(0, 0, 0);
+  color: rgb(148, 0, 0);
   font-size: 30px;
   order: 1;
 }
@@ -154,16 +154,8 @@
   cursor: pointer;
 }
 
-.cart-decrease:hover {
-  color: rgb(148, 0, 0);
-}
-
-.cart-increase:hover {
-  color: rgb(1, 85, 1);
-}
-
 .cart-increase:active, .cart-decrease:active {
-  color: rgb(107, 107, 107);
+  color: rgb(28, 15, 206);
 }
 
 .total {
@@ -183,20 +175,19 @@
 }
 
 .buy-container button {
-  background: rgb(0, 0, 0);
+  background: rgb(61, 128, 75);
   border: none;
   border-radius: 5px;
   color: rgb(255, 255, 255);
   font-weight: 900;
   height: 40px;
-  width: 200px;
   cursor: pointer;
 }
 
 .buy-container button:hover {
-  background: rgb(83, 83, 83);
+  background: rgb(3, 146, 39);
 }
 
 .buy-container button:active {
-  background: rgb(136, 136, 136);
+  background: rgb(4, 27, 160);
 }

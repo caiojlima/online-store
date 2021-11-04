@@ -1,0 +1,72 @@
+.register-link {
+  color: white;
+  font-size: 26px;
+  align-self: flex-start;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  font-size: 20px;
+}
+
+.register-container h1 {
+  margin-bottom: 50px;
+  color: white;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 250px;
+}
+
+.register-name {
+  width: 280px;
+}
+
+.register-lastname {
+  width: 220px;
+}
+
+.register-email {
+  width: 270px;
+}
+
+.register-password {
+  width: 270px;
+}
+
+.register-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.register-btn-container button {
+  background: rgb(2, 194, 2);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+  height: 40px;
+  cursor: pointer;
+}
+
+.register-btn-container button:hover {
+  background: rgb(1, 155, 1);
+}
+
+.register-btn-container button:disabled {
+  background: rgb(99, 99, 99);
+  cursor: initial;
+}
