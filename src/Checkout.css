@@ -1,3 +1,19 @@
+.login-popout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height:500px;
+}
+
+.login-popout h1 {
+  color: white;
+}
+
+.checkout-link {
+  font-size: 100px;
+}
+
 .form-fieldset {
   border: none;
   display: flex;

@@ -28,8 +28,13 @@ class Checkout extends React.Component {
       city: '',
       stateCountry: 'Selecione seu Estado:',
       isButtonDisabled: true,
-      pay: ''
+      pay: '',
+      logged: true,
     };
+  }
+
+  componentDidMount() {
+    this.ifIsLogged();
   }
 
   buttonCheckout = () => {
@@ -61,13 +66,27 @@ class Checkout extends React.Component {
     this.setState({ [name]: value }, this.buttonValidation);
   }
 
+  ifIsLogged = () => {
+    if (!sessionStorage.getItem('logged')) {
+      this.setState({ logged: false })
+    }
+  }
+
   render() {
     const stringArray = localStorage.getItem('items');
     const nameArray = JSON.parse(stringArray);
     const { onChange, buttonCheckout,
       state: {
-        email, CPF, telefone, CEP, adress, city, nomeCompleto, stateCountry, isButtonDisabled,
+        email, CPF, telefone, CEP, adress, city, nomeCompleto, stateCountry, isButtonDisabled, logged,
       } } = this;
+    if (!logged) {
+      return (
+        <div className="login-popout">
+          <h1>FAÇA LOGIN PARA CONTINUAR</h1>
+          <Link className="link checkout-link" to="/"><GoHome /></Link>
+        </div>
+      );
+    } 
     return (
       <fieldset className="form-fieldset">
         <div className="links-container">

@@ -23,6 +23,10 @@ class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    this.checkIfIsLogged();
+  }
+
   addItemCart = (name, availability, thumbnail, price) => {
     const items = localStorage.getItem('items');
     const parseItems = JSON.parse(items);
@@ -89,8 +93,16 @@ class Home extends Component {
     const user = arrayUsers.find(user => user.email === email);
     if (user && user.password === senha) {
       this.setState({ login:true, user: `${user.name} ${user.lastname}` });
+      sessionStorage.setItem('logged', JSON.stringify(user));
     } else {
       this.setState({ email:'', senha:'', placeholder: 'DADOS INVÁLIDOS!' });
+    }
+  }
+
+  checkIfIsLogged = () => {
+    if (sessionStorage.getItem('logged')) {
+      const user = JSON.parse(sessionStorage.getItem('logged'));
+      this.setState({ login:true, user: `${user.name} ${user.lastname}` });
     }
   }
 

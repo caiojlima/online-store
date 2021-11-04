@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import Details from './Pages/Details';
-import Checkout from './components/Checkout';
+import Checkout from './Pages/Checkout';
 import CreateProfile from './Pages/CreateProfile';
 
 function App() {
