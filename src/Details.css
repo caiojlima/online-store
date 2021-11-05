@@ -1,12 +1,9 @@
 .links-container {
   display: flex;
-  font-size: 25px;
+  font-size: 26px;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-left: 10px;
-  width: 14%;
-  height: 50px;
+  width: 11%;
 }
 
 .main-container {

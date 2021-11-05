@@ -21,6 +21,7 @@ class Home extends Component {
       placeholder:'',
       login: false,
       user: '',
+      image: '',
     };
   }
 
@@ -97,7 +98,7 @@ class Home extends Component {
     const arrayUsers = JSON.parse(localStorage.getItem('users'));
     const user = arrayUsers.find(user => user.email === email);
     if (user && user.password === senha) {
-      this.setState({ login:true, user: `${user.name} ${user.lastname}` });
+      this.setState({ login:true, user: `${user.name} ${user.lastname}`, image: user.image });
       sessionStorage.setItem('logged', JSON.stringify(user));
     } else {
       this.setState({ email:'', senha:'', placeholder: 'DADOS INVÁLIDOS!' });
@@ -107,7 +108,11 @@ class Home extends Component {
   checkIfIsLogged = () => {
     if (sessionStorage.getItem('logged')) {
       const user = JSON.parse(sessionStorage.getItem('logged'));
-      this.setState({ login:true, user: `${user.name} ${user.lastname}` });
+      this.setState({ 
+        login:true,
+        user: `${user.name} ${user.lastname}`,
+        image: (user.image) ? user.image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5wFVx7DL3gOWTu6TpNqVZaCl75yccqd6aA&usqp=CAU',
+      });
     }
   }
 
@@ -119,14 +124,17 @@ class Home extends Component {
   render() {
     const cartCount = JSON.parse(localStorage.getItem('items'));
     const { inputChange, search, loginCheck, logout,
-      state: { queryInput, result, loading, email, senha, placeholder, login, user, sort } } = this;
+      state: { queryInput, result, loading, email, senha, placeholder, login, user, sort, image } } = this;
     return (
       <div>
         <div className="header">
           <h1 className="title">ONLINE STORE</h1>
           {(login) ? (
             <div className="welcome-container">
-              <h3 className="welcome">Bem Vindo: {`${user}`}!</h3>
+              <div className="image-container">
+                <img src={ (image) ? image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5wFVx7DL3gOWTu6TpNqVZaCl75yccqd6aA&usqp=CAU' } alt="profile" />
+              </div>
+              <h3 className="welcome">Bem Vindo(a): {`${user}`}!</h3>
               <div className="welcome-btn-container">
                 <Link  to="/profile/edit"><button className="edit-profile" type="button">Editar Perfil</button></Link>
                 <button className="edit-profile" type="button" onClick={ logout }>Sair</button>
@@ -137,16 +145,16 @@ class Home extends Component {
             <div className="input-container">
               <label htmlFor="email">
                 Email:
-                <input placeholder={ placeholder } type="text" name="email" onChange={ inputChange } value={ email } />
+                <input className="email-home" placeholder={ placeholder } type="text" name="email" onChange={ inputChange } value={ email } />
               </label>
               <label htmlFor="senha">
                 Senha:
-                <input placeholder={ placeholder } type="password" name="senha" onChange={ inputChange } value={ senha } />
+                <input className="password-home" placeholder={ placeholder } type="password" name="senha" onChange={ inputChange } value={ senha } />
               </label>
-              <button onClick={ loginCheck } type="button">Entrar</button>
+              <button className="btn-login" onClick={ loginCheck } type="button">Entrar</button>
               </div>
-            <div>
-              <p>Novo? <Link to="/profile/new">Cadastre-se!</Link></p>
+            <div className="register-home-container">
+              <p>Novo? <Link to="/profile/new" className="register-home">Cadastre-se!</Link></p>
             </div>
           </form>
           )}

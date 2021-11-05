@@ -8,9 +8,12 @@ import '../Details.css';
 class Details extends Component {
   constructor(props) {
     super(props);
+
+    const user = JSON.parse(sessionStorage.getItem('logged'));
+
     this.state = {
       rating: 1,
-      emailInput: '',
+      emailInput: (user) ? user.email : '',
       commentInput: '',
       isButtonDisabled: true,
     };

@@ -19,8 +19,8 @@
 .middle,  
 .inner {
   border: 5px solid transparent;
-  border-top-color: #ffffff;
-  border-right-color: #ffffff;
+  border-top-color: #095302;
+  border-right-color: #095302;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -33,7 +33,7 @@
   margin-left: -1.75em;
   margin-top: -1.75em;
   animation: spin 2s linear infinite;
-  background-color: rgba(77, 77, 77, 0.473);
+  background-color: rgba(80, 80, 80, 0.527);
 }
 
 .middle {

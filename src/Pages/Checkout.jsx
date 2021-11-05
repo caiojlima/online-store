@@ -75,7 +75,11 @@ class Checkout extends React.Component {
       return (
         <div className="login-popout">
           <h1>FAÇA LOGIN PARA CONTINUAR</h1>
-          <Link className="link checkout-link" to="/"><GoHome /></Link>
+          <Link className="link checkout-link" to="/">
+            <div className="back-container">
+            <GoHome /><span>Voltar</span>
+            </div>
+            </Link>
         </div>
       );
     } 
@@ -85,7 +89,7 @@ class Checkout extends React.Component {
       } } = this;
     return (
       <fieldset className="form-fieldset">
-        <div className="links-container">
+        <div className="links-container-checkout">
           <Link className="link" to="/cart"><BsFillArrowLeftCircleFill /></Link>
           <Link className="link" to="/"><GoHome /></Link>
         </div>

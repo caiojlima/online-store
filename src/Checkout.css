@@ -13,14 +13,33 @@
 .checkout-link {
   font-size: 100px;
 }
+.back-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-link span {
+  font-size: 50px;
+}
 
 .form-fieldset {
   border: none;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 10px 50px;
+  padding: 0px 28px;
   color: white;
+}
+
+.links-container-checkout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  width: 5%;
+  margin: 0px;
 }
 
 .section-title {

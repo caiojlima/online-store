@@ -1,0 +1,56 @@
+.edit-link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5%;
+}
+
+.edit-link {
+  font-size: 26px;
+  margin: 15px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 500px;
+}
+
+.image-preview-container img {
+  border-radius: 50%;
+  width: 150px;
+  border: 5px solid rgb(61, 128, 75);
+}
+
+label {
+  font-size: 15px;
+}
+
+.image-edit {
+  width: 206px;
+}
+
+.name-edit {
+  width: 224px;
+}
+
+.email-edit {
+  width: 215px;
+}
+
+.button-save {
+  background: rgb(61, 128, 75);
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+  height: 40px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.button-save:hover{
+  background: rgb(3, 146, 39);
+}

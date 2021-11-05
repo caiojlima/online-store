@@ -28,8 +28,13 @@
   height: 250px;
 }
 
+.register-form input {
+  border-radius: 5px;
+  border: solid 2px rgb(61, 128, 75);
+}
+
 .register-name {
-  width: 280px;
+  width: 265px;
 }
 
 .register-lastname {
@@ -37,11 +42,15 @@
 }
 
 .register-email {
-  width: 270px;
+  width: 255px;
 }
 
 .register-password {
-  width: 270px;
+  width: 256px;
+}
+
+.register-repeatpass {
+  width: 184px;
 }
 
 .register-btn-container {
