@@ -11,9 +11,11 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
+    const results = JSON.parse(sessionStorage.getItem('results'));
+
     this.state = {
       queryInput: '',
-      result: undefined,
+      result: (results) ? results : undefined,
       loading: false,
       email: '',
       senha: '',
@@ -56,32 +58,38 @@ class Home extends Component {
     const { result } = this.state;
     if ( value === 'maior') {
       result.sort((a, b) => b.price - a.price);
+      sessionStorage.setItem('results', JSON.stringify(result));
       this.setState({ result: result });
     } else if ( value === 'menor') {
       result.sort((a, b) => a.price - b.price);
+      sessionStorage.setItem('results', JSON.stringify(result));
       this.setState({ result: result });
     } else if (value === 'a-z') {
       result.sort((a, b) => a.title.localeCompare(b.title));
+      sessionStorage.setItem('results', JSON.stringify(result));
       this.setState({ result: result });
     } else if (value === 'z-a') {
       result.sort((a, b) => -(a.title.localeCompare(b.title)));
+      sessionStorage.setItem('results', JSON.stringify(result));
       this.setState({ result: result });
     } else {
       result.sort((a, b) => b.sold_quantity - a.sold_quantity);
+      sessionStorage.setItem('results', JSON.stringify(result));
       this.setState({ result: result });
     }
   }
 
   search = async ({ target: { name } }) => {
-    this.forceUpdate();
     if (!name) {
       const { queryInput } = this.state;
       this.setState({ loading: true });
       const { results } = await getProductsFromCategoryAndQuery('', queryInput);
+      sessionStorage.setItem('results', JSON.stringify(results));
       this.setState({ result: results, loading: false });
     } else {
       this.setState({ loading: true });
       const { results } = await getProductsFromCategoryAndQuery('', name);
+      sessionStorage.setItem('results', JSON.stringify(results));
       this.setState({ result: results, loading: false });
     }
   }
