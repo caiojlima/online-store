@@ -19,7 +19,7 @@ class Card extends React.Component {
             key={ id }
           >
             <div className="card-img-container">
-              <img src={ thumbnail } alt="imagem" className="card-img" />
+              <img src={ thumbnail.replace(/\w.jpg/, 'H.jpg') } alt="imagem" className="card-img" />
             </div>
             <div className="title-container">
               <p className="card-title">
