@@ -7,6 +7,7 @@ import Details from './Pages/Details';
 import Checkout from './Pages/Checkout';
 import CreateProfile from './Pages/CreateProfile';
 import EditProfile from './Pages/EditProfile';
+import NotFound from './Pages/NotFound';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/profile/new" component= { CreateProfile } />
         <Route path="/profile/edit" component= { EditProfile } />
         <Route exact path="/" component={ Home } />
+        <Route path="" component={ NotFound } />
       </Switch>
     </BrowserRouter>
   );
