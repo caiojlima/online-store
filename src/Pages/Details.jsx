@@ -97,7 +97,7 @@ class Details extends Component {
             <span>{price.toFixed(2).replace('.', ',')}</span>
           </h2>
           <div className="main-info">
-            <img src={ thumbnail } alt={ title } />
+            <img src={ thumbnail.replace(/\w.jpg/, 'H.jpg') } alt={ title } />
             <ul>
               {(attributes) && attributes.map(({ name, value_name: value }) => (
                 <li key={ name }>{`${name}: ${(value) ? value : 0 }`}</li>

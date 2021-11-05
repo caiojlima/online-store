@@ -76,7 +76,7 @@ class Cart extends React.Component {
                   {nameArray
                     .map(({ name, count, thumbnail, price }, index) => (
                       <div className="cart-card-container" key={ index }>
-                        <img className="cart-img" src={ thumbnail } alt={ name } />
+                        <img className="cart-img" src={ thumbnail.replace(/\w.jpg/, 'H.jpg') } alt={ name } />
                         <h4 className="cart-title" data-testid="shopping-cart-product-name">{name}</h4>
                         <h4 className="cart-price">R${ (Number(price) * count).toFixed(2).replace('.', ',') }</h4>
                         <div className="count-container">
