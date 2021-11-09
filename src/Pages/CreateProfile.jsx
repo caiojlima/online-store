@@ -59,23 +59,23 @@ class CreateProfile extends Component {
         <form className="register-form">
           <label htmlFor="name">
             Nome:
-            <input className="register-name" type="text" name="name" onChange={ inputChange } value={ name } />
+            <input className="register-name" id="name" type="text" name="name" onChange={ inputChange } value={ name } />
           </label>
           <label htmlFor="lastname">
             Sobrenome:
-            <input className="register-lastname" type="text" name="lastname" onChange={ inputChange } value={ lastname } />
+            <input className="register-lastname" id="lastname" type="text" name="lastname" onChange={ inputChange } value={ lastname } />
           </label>
           <label htmlFor="email">
             Email:
-            <input className="register-email" type="text" name="email" onChange={ inputChange } value={ email } />
+            <input className="register-email" id="email" type="text" name="email" onChange={ inputChange } value={ email } />
           </label>
           <label htmlFor="password">
             Senha:
-            <input className="register-password" type="password" name="password" onChange={ inputChange } value={ password } />
+            <input className="register-password" id="password" type="password" name="password" onChange={ inputChange } value={ password } />
           </label>
-          <label htmlFor="repeatpass">
+          <label htmlFor="repeatPass">
             Repetir Senha:
-            <input className="register-repeatpass" type="password" name="repeatPass" onChange={ inputChange } value={ repeatPass } />
+            <input className="register-repeatpass" id="repeatPass" type="password" name="repeatPass" onChange={ inputChange } value={ repeatPass } />
           </label>
           <div className="register-btn-container">
             <Link to="/">

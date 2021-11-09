@@ -1,6 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { screen, waitFor } from '@testing-library/dom';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Home from '../Pages/Home';
 import categories from './mocks/categories';
@@ -8,11 +9,13 @@ import getCategoriesResult from './mocks/api';
 const api = require('../services/api');
 
 beforeEach(() => {
-  jest.spyOn(api, 'getCategories').mockResolvedValue(getCategoriesResult);
-  renderWithRouter(<Home />)
+  jest.spyOn(api, 'getCategories').mockResolvedValue(getCategoriesResult); 
 });
 
-describe('Testando a página inicial', () => {
+describe('Verificando se todos os elementos são carregados na página Home', () => {
+  beforeEach(() => {
+    renderWithRouter(<Home />);
+  });
   test('Verificando se o Header carrega todos os elementos.', () => {
     const title = screen.getByText(/online store/i);
     const emailInput = screen.getByLabelText(/Email:/i);
@@ -42,7 +45,7 @@ describe('Testando a página inicial', () => {
     expect(initialMessage).toBeInTheDocument();
   });
 
-  test('Verifica se há uma seção com as categorias disponíveis', async () => {    
+  test('Verifica se há uma seção com as categorias disponíveis', async () => {
     const categoriesTitle = screen.getByText(/categorias:/i);
     const categoriesButtons = await screen.findAllByTestId('category');
 
@@ -66,5 +69,73 @@ describe('Testando a página inicial', () => {
     expect(linkedinImage).toBeInTheDocument();
     expect(githubImage.src).toBe(githubSrc);
     expect(linkedinImage.src).toBe(linkedinSrc);
+  });
+});
+
+describe('Testando funcionamento dos links', () => {
+  test('Verifica se ao clicar no link `Cadastre-se` leva-se a página correta', () => {
+    const { history } = renderWithRouter(<Home />);
+    const registerLink = screen.getByRole('link', { name: /cadastre-se!/i });
+
+    expect(registerLink).toBeInTheDocument();
+    userEvent.click(registerLink);
+
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/profile/new');
+  });
+
+  test('Verifica se ao clicar no link para o cart leva-se a página correta', () => {
+    const { history } = renderWithRouter(<Home />);
+    const cartLink = screen.getByTestId('shopping-cart-button');
+
+    expect(cartLink).toBeInTheDocument();
+    userEvent.click(cartLink);
+
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/cart');
+  });
+});
+
+describe('Testando funcionamento do Login de Usuário', () => {
+  test('Testa se ao cadastar um usuário, é mostrado suas informações', async () => {
+    const { history } = renderWithRouter(<Home />);
+    const registerLink = screen.getByRole('link', { name: /cadastre-se!/i });
+
+    expect(registerLink).toBeInTheDocument();
+    userEvent.click(registerLink);
+
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/profile/new');
+
+    const firstnameInput = await screen.findByLabelText(/Nome:/i);
+    const lastnameInput = await screen.findByLabelText(/Sobrenome:/i);
+    const emailInput = await screen.findByLabelText(/Email:/i);
+    const passwordInput = await screen.findByLabelText(/Senha:/i);
+    const repeatPassInput = await screen.findByLabelText(/Repetir Senha:/i);
+    const submitButton = await screen.findByRole('button');
+
+    userEvent.type(firstnameInput, 'Caio');
+    userEvent.type(lastnameInput, 'Lima');
+    userEvent.type(emailInput, 'caiojlimah@gmail.com');
+    userEvent.type(passwordInput, '123123123');
+    userEvent.type(repeatPassInput, '123123123');
+    userEvent.click(submitButton);
+
+    const { location: { pathname: pathname2 } } = history;
+
+    expect(pathname2).toBe('/');
+
+    const greetings = screen.findByText(/Bem Vindo(a): Caio Lima!/);
+    const profileImage = screen.getByAltText(/profile/i);
+    const editProfile = screen.getByRole('button', { name: /Editar Perfil/i });
+    const logout = screen.getByRole('button', { name: /Sair/i });
+
+    expect(greetings).toBeInTheDocument();
+    expect(profileImage).toBeInTheDocument();
+    expect(editProfile).toBeInTheDocument();
+    expect(logout).toBeInTheDocument();
   });
 });
