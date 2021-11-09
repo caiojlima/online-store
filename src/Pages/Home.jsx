@@ -153,11 +153,11 @@ class Home extends Component {
             <div className="input-container">
               <label htmlFor="email">
                 Email:
-                <input className="email-home" placeholder={ placeholder } type="text" name="email" onChange={ inputChange } value={ email } />
+                <input className="email-home" placeholder={ placeholder } type="text" name="email" id="email" onChange={ inputChange } value={ email } />
               </label>
               <label htmlFor="senha">
                 Senha:
-                <input className="password-home" placeholder={ placeholder } type="password" name="senha" onChange={ inputChange } value={ senha } />
+                <input className="password-home" placeholder={ placeholder } type="password" name="senha" id="senha" onChange={ inputChange } value={ senha } />
               </label>
               <button className="btn-login" onClick={ loginCheck } type="button">Entrar</button>
               </div>
@@ -227,6 +227,17 @@ class Home extends Component {
             { (result) && <Card addItemCart={ this.addItemCart } result={ result } /> }
           </div>
         </div>
+        <footer>
+          <p>Criado por <a href="https://www.linkedin.com/in/caio-limah/" target="_blank">Caio Lima</a></p>
+          <div className="footer-links-container">
+            <div className="github-container">
+              <a href="https://github.com/caiojlima/online-store" target="_blank"><img className="github" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvo39Igv-r_ajdF0ZCLlcqgTfixAl7nelyUg&usqp=CAU" alt="github link" /></a>
+            </div>
+            <div className="linkedin-container">
+            <a href="https://www.linkedin.com/in/caio-limah/" target="_blank"><img  className="linkedin" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4z_aW0bHEtkMp1DY0TGx2ssD35JQcpBvuxQ&usqp=CAU" alt="linkedin link" /></a>
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }

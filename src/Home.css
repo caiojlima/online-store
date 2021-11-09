@@ -235,3 +235,55 @@ a {
   width: 100%;
   position: relative;
 }
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 150px;
+  border: black 1px solid;
+  border-bottom: none;
+  margin-top: 20px;
+  background: rgb(168,165,164);
+  background: radial-gradient(circle, rgba(168,165,164,1) 32%, rgba(0,0,0,1) 82%);
+}
+
+footer p, footer p a  {
+  font-size: 16px;
+  color: black;
+}
+
+footer p a {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+footer p a:hover {
+  text-shadow: 2px 2px 2px rgb(61, 128, 75);
+}
+
+.footer-links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.github, .linkedin {
+  width: 50px;
+  border-radius: 50%;
+  transition: ease 0.2s;
+}
+
+.github-container, .linkedin-container {
+  margin: 0px 10px;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.github:hover, .linkedin:hover {
+  transform: scale(1.1);
+  border: rgb(61, 128, 75) 3px solid;
+}
