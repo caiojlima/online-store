@@ -6,6 +6,8 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import categories from './mocks/categories';
 import getCategoriesResult from './mocks/api_MOCK';
+import searchResults from './mocks/result_MOCK';
+import categoriesResult from './mocks/categoriesResult_MOCK';
 const api = require('../services/api');
 
 beforeEach(() => {
@@ -168,8 +170,132 @@ describe('Testando funcionamento do Login de Usuário', () => {
   });
 });
 
-describe('Testando pesquisa de produto por texto e por categoria', () => {
-  test('verifica se ao pesquisar um produto, o mesmo aparece na tela', () => {
-    
+describe('Testando pesquisa de produto por texto e por categoria, e a ordenação de produtos', () => {
+  beforeEach(() => {
+    renderWithRouter(<App />);
+  });
+  test('verifica se ao pesquisar por um tipo produto, os elementos aparecem na tela', async () => {
+    jest.spyOn(api, 'getProductsFromCategoryAndQuery').mockResolvedValue(searchResults);
+
+    const queryInput = screen.getByTestId('query-input');
+    const queryButton = screen.getByTestId('query-button');
+
+    expect(queryInput).toBeInTheDocument();
+    expect(queryButton).toBeInTheDocument();
+
+    userEvent.type(queryInput, 'Computador');
+    userEvent.click(queryButton);
+
+    const loading = screen.getByTestId('loading');
+
+    expect(loading).toBeInTheDocument();
+
+    const select = await screen.findByRole('combobox');
+    const products = await screen.findAllByTestId('product');
+
+    expect(loading).not.toBeInTheDocument();
+    expect(select).toBeInTheDocument();
+    expect(products).toHaveLength(50);
+    products.forEach((product) => {
+      expect(product).toBeInTheDocument();
+    });
+  });
+
+  test('Verifica se ao clicar em uma categoria, os elementos são renderizados', async () => {
+    jest.spyOn(api, 'getProductsFromCategoryAndQuery').mockResolvedValue(categoriesResult);
+
+    const foodAndBeverageCategory = await screen.findByRole('button', { name: /Alimentos e Bebidas/i });
+
+    expect(foodAndBeverageCategory).toBeInTheDocument();
+
+    userEvent.click(foodAndBeverageCategory);
+
+    const loading = screen.getByTestId('loading');
+
+    expect(loading).toBeInTheDocument();
+
+    const select = await screen.findByRole('combobox');
+    const products = await screen.findAllByTestId('product');
+
+    expect(loading).not.toBeInTheDocument();
+    expect(select).toBeInTheDocument();
+    expect(products).toHaveLength(50);
+    products.forEach((product) => {
+      expect(product).toBeInTheDocument();
+    });
+  });
+
+  test('Testando se a ordenação de produtos funciona corretamente', async () => {
+    jest.spyOn(api, 'getProductsFromCategoryAndQuery').mockResolvedValue(categoriesResult);
+
+    const foodAndBeverageCategory = await screen.findByRole('button', { name: /Alimentos e Bebidas/i });
+
+    expect(foodAndBeverageCategory).toBeInTheDocument();
+
+    userEvent.click(foodAndBeverageCategory);
+
+    const loading = screen.getByTestId('loading');
+
+    expect(loading).toBeInTheDocument();
+
+    const select = await screen.findByRole('combobox');
+    const products = await screen.findAllByTestId('product');
+
+    expect(loading).not.toBeInTheDocument();
+    expect(select).toBeInTheDocument();
+    expect(products).toHaveLength(50);
+    products.forEach((product) => {
+      expect(product).toBeInTheDocument();
+    });
+    expect(products[0]).toHaveTextContent('Chá Leão Água Gelada - Abacaxi E Hortelã 10 Sachês');
+
+    userEvent.selectOptions(select, 'a-z');
+
+    const option = await screen.findByRole('option', { name: 'A-Z' });
+    const sortedProducts = await screen.findAllByTestId('product');
+
+    expect(option.selected).toBe(true);
+    expect(sortedProducts[0]).toHaveTextContent('4x Biscoito Bahlsen Choco Leibnez Milk 125g');
+  });
+});
+
+describe('Testando botão dos cards e o link de mais detalhes', () => {
+  beforeEach(() => {
+    jest.spyOn(api, 'getProductsFromCategoryAndQuery').mockResolvedValue(categoriesResult);
+  });
+  test('Verifica se ao clicar no botão, a contagem do carrinho é atualizada', async () => {
+    renderWithRouter(<App />);
+    const foodAndBeverageCategory = await screen.findByRole('button', { name: /Alimentos e Bebidas/i });
+
+    expect(foodAndBeverageCategory).toBeInTheDocument();
+
+    userEvent.click(foodAndBeverageCategory);
+
+    const addToCartButtons = await screen.findAllByRole('button', { name: /Adicionar ao carrinho/i });
+
+    for(let i = 1; i <= 10; i += 1) {
+      userEvent.click(addToCartButtons[0]);
+    }
+
+    const cartCount = screen.getByTestId('shopping-cart-size');
+
+    expect(cartCount).toHaveTextContent(/10/i);
+  });
+
+  test('Testando se o link de `Mais Detalhes` leva até a página correta', async () => {
+    const { history } = renderWithRouter(<App />)
+    const foodAndBeverageCategory = await screen.findByRole('button', { name: /Alimentos e Bebidas/i });
+
+    expect(foodAndBeverageCategory).toBeInTheDocument();
+
+    userEvent.click(foodAndBeverageCategory);
+
+    const moreDetailsLinks = await screen.findAllByRole('link', { name: /Mais Detalhes/i });
+
+    userEvent.click(moreDetailsLinks[0]);
+
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/details/MLB1915507545');
   });
 });

@@ -5,7 +5,7 @@ class Loading extends Component {
   render() {
     return (
       <div className="loading-container">
-        <div className="loader">
+        <div className="loader" data-testid="loading">
           <div className="outer"></div>
           <div className="middle"></div>
           <div className="inner"></div>
