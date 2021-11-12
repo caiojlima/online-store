@@ -142,7 +142,7 @@ class Home extends Component {
               <div className="image-container">
                 <img src={ (image) ? image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5wFVx7DL3gOWTu6TpNqVZaCl75yccqd6aA&usqp=CAU' } alt="profile" />
               </div>
-              <h3 className="welcome">Bem Vindo(a): {`${user}`}!</h3>
+              <h3 className="welcome" data-testid="welcome">Bem Vindo(a): {`${user}`}!</h3>
               <div className="welcome-btn-container">
                 <Link  to="/profile/edit"><button className="edit-profile" type="button">Editar Perfil</button></Link>
                 <button className="edit-profile" type="button" onClick={ logout }>Sair</button>

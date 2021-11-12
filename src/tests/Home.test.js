@@ -3,9 +3,9 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
-import Home from '../Pages/Home';
+import App from '../App';
 import categories from './mocks/categories';
-import getCategoriesResult from './mocks/api';
+import getCategoriesResult from './mocks/api_MOCK';
 const api = require('../services/api');
 
 beforeEach(() => {
@@ -14,7 +14,7 @@ beforeEach(() => {
 
 describe('Verificando se todos os elementos são carregados na página Home', () => {
   beforeEach(() => {
-    renderWithRouter(<Home />);
+    renderWithRouter(<App />);
   });
   test('Verificando se o Header carrega todos os elementos.', () => {
     const title = screen.getByText(/online store/i);
@@ -52,8 +52,8 @@ describe('Verificando se todos os elementos são carregados na página Home', ()
     expect(categoriesTitle).toBeInTheDocument();
     expect(categoriesButtons).toHaveLength(32);
     categoriesButtons.forEach((button, index) => {
-      expect(button).toBeInTheDocument();
-      expect(button).toHaveTextContent(categories[index]);
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent(categories[index]);
     });
   });
 
@@ -73,11 +73,15 @@ describe('Verificando se todos os elementos são carregados na página Home', ()
 });
 
 describe('Testando funcionamento dos links', () => {
-  test('Verifica se ao clicar no link `Cadastre-se` leva-se a página correta', () => {
-    const { history } = renderWithRouter(<Home />);
+  test('Verifica se ao clicar no link `Cadastre-se` leva-se a página correta', async () => {
+    const { history } = renderWithRouter(<App />);
     const registerLink = screen.getByRole('link', { name: /cadastre-se!/i });
 
     expect(registerLink).toBeInTheDocument();
+
+    const categorys = await screen.findAllByTestId('category');
+
+    expect(categorys[0]).toBeInTheDocument();
     userEvent.click(registerLink);
 
     const { location: { pathname } } = history;
@@ -85,11 +89,16 @@ describe('Testando funcionamento dos links', () => {
     expect(pathname).toBe('/profile/new');
   });
 
-  test('Verifica se ao clicar no link para o cart leva-se a página correta', () => {
-    const { history } = renderWithRouter(<Home />);
+  test('Verifica se ao clicar no link para o cart leva-se a página correta', async () => {
+    const { history } = renderWithRouter(<App />);
     const cartLink = screen.getByTestId('shopping-cart-button');
 
     expect(cartLink).toBeInTheDocument();
+
+    const categorys = await screen.findAllByTestId('category');
+
+    expect(categorys[0]).toBeInTheDocument();
+    
     userEvent.click(cartLink);
 
     const { location: { pathname } } = history;
@@ -100,42 +109,67 @@ describe('Testando funcionamento dos links', () => {
 
 describe('Testando funcionamento do Login de Usuário', () => {
   test('Testa se ao cadastar um usuário, é mostrado suas informações', async () => {
-    const { history } = renderWithRouter(<Home />);
+    const { history } = renderWithRouter(<App />);
     const registerLink = screen.getByRole('link', { name: /cadastre-se!/i });
 
     expect(registerLink).toBeInTheDocument();
+
+    const categorys = await screen.findAllByTestId('category');
+
+    expect(categorys[0]).toBeInTheDocument();
     userEvent.click(registerLink);
 
     const { location: { pathname } } = history;
 
     expect(pathname).toBe('/profile/new');
 
-    const firstnameInput = await screen.findByLabelText(/Nome:/i);
-    const lastnameInput = await screen.findByLabelText(/Sobrenome:/i);
-    const emailInput = await screen.findByLabelText(/Email:/i);
-    const passwordInput = await screen.findByLabelText(/Senha:/i);
-    const repeatPassInput = await screen.findByLabelText(/Repetir Senha:/i);
-    const submitButton = await screen.findByRole('button');
+    const firstnameInput = screen.getByLabelText(/^Nome:$/i);
+    const lastnameInput = screen.getByLabelText(/Sobrenome:/i);
+    const emailInput = screen.getByLabelText(/Email:/i);
+    const passwordInput = screen.getByLabelText(/^Senha:$/i);
+    const repeatPassInput = screen.getByLabelText(/Repetir Senha:/i);
+    const submitButton = screen.getByRole('button');
+
+    expect(firstnameInput).toBeInTheDocument();
+    expect(lastnameInput).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
+    expect(repeatPassInput).toBeInTheDocument();
+    expect(submitButton).toBeInTheDocument();
+
+    expect(submitButton).toBeDisabled();
 
     userEvent.type(firstnameInput, 'Caio');
     userEvent.type(lastnameInput, 'Lima');
     userEvent.type(emailInput, 'caiojlimah@gmail.com');
     userEvent.type(passwordInput, '123123123');
     userEvent.type(repeatPassInput, '123123123');
-    userEvent.click(submitButton);
 
+    expect(submitButton).not.toBeDisabled();
+
+    userEvent.click(submitButton);
+    
     const { location: { pathname: pathname2 } } = history;
 
     expect(pathname2).toBe('/');
 
-    const greetings = screen.findByText(/Bem Vindo(a): Caio Lima!/);
+    const profileURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5wFVx7DL3gOWTu6TpNqVZaCl75yccqd6aA&usqp=CAU';
+    const greetings = screen.getByTestId('welcome');
     const profileImage = screen.getByAltText(/profile/i);
     const editProfile = screen.getByRole('button', { name: /Editar Perfil/i });
-    const logout = screen.getByRole('button', { name: /Sair/i });
+    const logout = screen.getByRole('button', { name: /Sair/i }); 
 
     expect(greetings).toBeInTheDocument();
+    expect(greetings).toHaveTextContent('Bem Vindo(a): Caio Lima!');
     expect(profileImage).toBeInTheDocument();
+    expect(profileImage).toHaveAttribute('src', profileURL)
     expect(editProfile).toBeInTheDocument();
     expect(logout).toBeInTheDocument();
+  });
+});
+
+describe('Testando pesquisa de produto por texto e por categoria', () => {
+  test('verifica se ao pesquisar um produto, o mesmo aparece na tela', () => {
+    
   });
 });

@@ -18,7 +18,6 @@ class CreateProfile extends Component {
 
   buttonValidation = () => {
     const { name, lastname, email, password, repeatPass } = this.state;
-    console.log(name, lastname, email, password, repeatPass)
     if (name && lastname && email.includes('@' && '.com') && password.length > 8 && repeatPass === password) {
       this.setState({ isButtonDisabled: false })
     } else {

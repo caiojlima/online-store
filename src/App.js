@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
 import Cart from './Pages/Cart';
 import Details from './Pages/Details';
@@ -10,9 +10,7 @@ import EditProfile from './Pages/EditProfile';
 import NotFound from './Pages/NotFound';
 
 function App() {
-  return (
-
-    <BrowserRouter>
+  return (    
       <Switch>
         <Route path="/checkout" component={ Checkout } />
         <Route path="/cart" component={ Cart } />
@@ -22,7 +20,6 @@ function App() {
         <Route exact path="/" component={ Home } />
         <Route path="" component={ NotFound } />
       </Switch>
-    </BrowserRouter>
   );
 }
 
