@@ -52,19 +52,19 @@ class EditProfile extends Component {
           </div>
           <label htmlFor="image">
             Imagem:
-            <input className="image-edit" type="text" name="image" value={ image } onChange={ handleInput } />
+            <input className="image-edit" type="text" id="image" name="image" value={ image } onChange={ handleInput } />
           </label>
           <label htmlFor="name">
             Nome:
-            <input className="name-edit" type="text" name="name" value={ name } onChange={ handleInput } />
+            <input className="name-edit" type="text" id="name" name="name" value={ name } onChange={ handleInput } />
           </label>
           <label htmlFor="lastname">
             Sobrenome:
-            <input className="lastname-edit" type="text" name="lastname" value={ lastname } onChange={ handleInput } />
+            <input className="lastname-edit" type="text" id="lastname" name="lastname" value={ lastname } onChange={ handleInput } />
           </label>
           <label htmlFor="email">
             Email:
-            <input className="email-edit" type="text" name="email" value={ email } onChange={ handleInput } />
+            <input className="email-edit" type="text" id="email" name="email" value={ email } onChange={ handleInput } />
           </label>
           <Link to="/">
             <button className="button-save" type="button" onClick={ saveButton }>Salvar</button>
