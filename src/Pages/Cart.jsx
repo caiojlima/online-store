@@ -23,8 +23,6 @@ class Cart extends React.Component {
       const parseItems = JSON.parse(items);
       const obj = parseItems.find(({ name: name2 }) => name2 === name);
       const objIndex = parseItems.indexOf(obj);
-      console.log(objIndex)
-      console.log('Parse antes ', parseItems)
       if (obj.count > 1) {
         obj.count -= 1;
         parseItems[objIndex] = obj;
