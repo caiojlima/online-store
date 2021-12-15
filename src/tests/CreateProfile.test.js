@@ -78,12 +78,10 @@ describe('Testando a page CreateProfile', () => {
     expect(logged.name).toBe('Caio');
     expect(logged.lastname).toBe('Lima');
     expect(logged.email).toBe('caiojlimah@gmail.com');
-    expect(logged.image).toBeUndefined();
 
     expect(user[0].name).toBe('Caio');
     expect(user[0].lastname).toBe('Lima');
     expect(user[0].email).toBe('caiojlimah@gmail.com');
-    expect(user[0].image).toBeUndefined();
 
   })
 });
