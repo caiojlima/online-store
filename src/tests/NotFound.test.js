@@ -22,5 +22,5 @@ describe('Testando a página NotFound', () => {
     const { location: { pathname } } = history;
 
     expect(pathname).toBe('/')
-  })
+  });
 })
