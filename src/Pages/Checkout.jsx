@@ -211,7 +211,7 @@ class Checkout extends React.Component {
               <option disabled>Selecione seu Estado:</option>
               {
                 brazilStates.map((value, key) => (
-                  <option key={ key }>{value}</option>
+                  <option key={ key } value={ value }>{value}</option>
                 ))
               }
             </select>
