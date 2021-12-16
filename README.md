@@ -32,6 +32,6 @@ git clone git@github.com:caiojlima/online-store.git
 cd online-store
 ```
 
-Ao entrar na pasta é só digitar `npm test` e pressionar o 'a' no teclado que os testes irão rodar localmente no seu terminal.
+Ao entrar na pasta é só digitar `npm test` e pressionar a tecla `a` que os testes irão rodar localmente no seu terminal.
 
 ![Gif npm test](/assets/tests.gif)
