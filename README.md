@@ -13,6 +13,8 @@ Esse projeto foi desenvolvido por mim ([Caio Lima](https://www.linkedin.com/in/c
 - **CSS**
 - **API DO MERCADO LIVRE**
 
+#### **OBS: Essa aplicação foi desenvolvida na resolução 1366x768!**
+
 ## Instruções:
 
 ### Aplicação online:
