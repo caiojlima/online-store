@@ -39,7 +39,8 @@ class Checkout extends React.Component {
   }
 
   buttonCheckout = () => {
-    localStorage.removeItem('items')
+    localStorage.removeItem('items');
+    sessionStorage.setItem('buy', 'true');
     this.setState({
       nomeCompleto: '',
       email: '',

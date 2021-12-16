@@ -1,0 +1,37 @@
+.buy-popout-container {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 22%;
+  animation: fadeinout 5s linear forwards;
+  z-index: 1;
+}
+
+.buy-popout {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  align-items: center;
+  background-color: rgb(230, 230, 230);
+  width: 300px;
+  height: 70px;
+  border: solid green 5px;
+  padding: 0;
+  margin-right: 15px;
+}
+
+.buy-popout h3 {
+  color: black;
+  font-size: 18px;
+}
+
+@keyframes fadeinout {
+  0%,100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+}

@@ -4,6 +4,7 @@ import { BsCart4, BsSearch } from 'react-icons/bs';
 import Categories from '../components/Categories';
 import Card from '../components/Card';
 import Loading from '../components/Loading';
+import BuyDone from '../components/BuyDone';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import '../Home.css';
 
@@ -24,18 +25,20 @@ class Home extends Component {
       login: false,
       user: '',
       image: '',
+      buy: false,
     };
   }
 
   componentDidMount() {
     this.checkIfIsLogged();
+    this.purchase();
   }
 
   addItemCart = (name, availability, thumbnail, price) => {
     const items = localStorage.getItem('items');
     const parseItems = JSON.parse(items);
     if (parseItems) {
-      if (!parseItems.some(({ name: name2 }) => name2 === name)) {
+      if (!parseItems.some(({ name: Agroname2 }) => name2 === name)) {
         parseItems.push({ name, count: 1, availability, thumbnail, price });
         const array = JSON.stringify(parseItems);
         localStorage.setItem('items', array);
@@ -129,10 +132,18 @@ class Home extends Component {
     this.setState({ login: false, user: '', email: '', senha: '' });
   }
 
+  purchase = () => {
+    const buy = JSON.parse(sessionStorage.getItem('buy'));
+    if (buy) {
+      this.setState({ buy });
+      sessionStorage.setItem('buy', 'false');
+    }
+  }
+
   render() {
     const cartCount = JSON.parse(localStorage.getItem('items'));
     const { inputChange, search, loginCheck, logout,
-      state: { queryInput, result, loading, email, senha, placeholder, login, user, sort, image } } = this;
+      state: { queryInput, result, loading, email, senha, placeholder, login, user, sort, image, buy } } = this;
     return (
       <div>
         <div className="header">
@@ -217,6 +228,7 @@ class Home extends Component {
             </select>
           )}
         </div>
+        {!!buy && <BuyDone />}
         <div className="main">
           <div className="categories-container">
             <h3 className="categories-title">Categorias:</h3>
