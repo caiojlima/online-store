@@ -25,7 +25,7 @@ Se você quiser ver o site rodando diretamente do seu navegador é só acessar [
 
 Para rodar os testes siga os seguintes passos:
 
-Faça o clone da aplicação no seu terminal e entre na pasta:
+Faça o clone da aplicação no seu terminal e entre na pasta `online-store`:
 
 ```
 git clone git@github.com:caiojlima/online-store.git
