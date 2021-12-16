@@ -279,7 +279,7 @@ describe('Testando botão dos cards e o link de mais detalhes', () => {
 
     const cartCount = screen.getByTestId('shopping-cart-size');
 
-    expect(cartCount).toHaveTextContent(/10/i);
+    expect(cartCount).toHaveTextContent(/1/i);
   });
 
   test('Testando se o link de `Mais Detalhes` leva até a página correta', async () => {

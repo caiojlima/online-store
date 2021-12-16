@@ -38,7 +38,7 @@ class Home extends Component {
     const items = localStorage.getItem('items');
     const parseItems = JSON.parse(items);
     if (parseItems) {
-      if (!parseItems.some(({ name: Agroname2 }) => name2 === name)) {
+      if (!parseItems.some(({ name: name2 }) => name2 === name)) {
         parseItems.push({ name, count: 1, availability, thumbnail, price });
         const array = JSON.stringify(parseItems);
         localStorage.setItem('items', array);
